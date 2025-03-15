@@ -15,7 +15,7 @@ public partial class Country
 
     public virtual ICollection<Footballer> Footballers { get; set; } = new List<Footballer>();
 
-    public virtual ICollection<Stadium> Stadia { get; set; } = new List<Stadium>();
+    public virtual ICollection<Stadium> Stadium { get; set; } = new List<Stadium>();
 
     public virtual ICollection<Team> Teams { get; set; } = new List<Team>();
 
