@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DataLayer
 {
-    internal class FootballerContext
+    internal class FootballerContext : IDb<Footballer, int>
     {
         private FootballteamsContext dbContext;
 

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DataLayer
 {
-    internal class ContinentContext
+    internal class ContinentContext : IDb<Continent, string>
     {
         private FootballteamsContext dbContext;
 
@@ -19,6 +19,11 @@ namespace DataLayer
             this.dbContext = dbContext;
         }
 
+        public void Create(Continent item)
+        {
+            dbContext.Continents.Add(item);
+            dbContext.SaveChanges();
+        }
         public Continent Read(string key, bool useNavigationalProperties = false, bool isReadOnly = false)
         {
             IQueryable<Continent> query = dbContext.Continents;
