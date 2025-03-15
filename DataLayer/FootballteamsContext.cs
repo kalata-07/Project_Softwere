@@ -23,7 +23,7 @@ public partial class FootballteamsContext : DbContext
 
     public virtual DbSet<Footballerstrophy> Footballerstrophies { get; set; }
 
-    public virtual DbSet<Stadium> Stadia { get; set; }
+    public virtual DbSet<Stadium> Stadium { get; set; }
 
     public virtual DbSet<Team> Teams { get; set; }
 
@@ -165,7 +165,7 @@ public partial class FootballteamsContext : DbContext
                 .HasMaxLength(30)
                 .HasColumnName("town_name");
 
-            entity.HasOne(d => d.CountryCodeNavigation).WithMany(p => p.Stadia)
+            entity.HasOne(d => d.CountryCodeNavigation).WithMany(p => p.Stadium)
                 .HasForeignKey(d => d.CountryCode)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_StadiumCountries");
