@@ -1,9 +1,9 @@
 Imports Microsoft.VisualStudio.TestTools.UnitTesting
+Imports NUnit.Framework
 
 Namespace TestingLayer
-    <TestClass>
     Public Class ContinentContextTests
-        <TestMethod>
+        <Test>
         Sub TestSub()
 
         End Sub
