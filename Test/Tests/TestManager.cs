@@ -1,5 +1,7 @@
 ﻿namespace Tests
 {
+
+
     [TestFixture]
     public class TestManager
     {
