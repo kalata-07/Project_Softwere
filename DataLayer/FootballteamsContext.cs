@@ -23,7 +23,7 @@ public partial class FootballteamsContext : DbContext
 
     public virtual DbSet<Footballerstrophy> Footballerstrophies { get; set; }
 
-    public virtual DbSet<Stadium> Stadium { get; set; }
+    public virtual DbSet<Stadium> Stadiums { get; set; }
 
     public virtual DbSet<Team> Teams { get; set; }
 
