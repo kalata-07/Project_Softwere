@@ -19,14 +19,14 @@ namespace DataLayer
 
         public void Create(Stadium item)
         {
-            dbContext.Stadium.Add(item);
+            dbContext.Stadiums.Add(item);
             dbContext.SaveChanges();
         }
 
 
         public Stadium Read(int key, bool useNavigationalProperties = false, bool isReadOnly = false)
         {
-            IQueryable<Stadium> query = dbContext.Stadium;
+            IQueryable<Stadium> query = dbContext.Stadiums;
 
             if (useNavigationalProperties) query = query.Include(g => g.CountryCode);
             if (isReadOnly) query = query.AsNoTrackingWithIdentityResolution();
@@ -40,7 +40,7 @@ namespace DataLayer
 
         public List<Stadium> ReadAll(bool useNavigationalProperties = false, bool isReadOnly = false)
         {
-            IQueryable<Stadium> query = dbContext.Stadium;
+            IQueryable<Stadium> query = dbContext.Stadiums;
 
             if (useNavigationalProperties) query = query.Include(g => g.CountryCode);
             if (isReadOnly) query = query.AsNoTrackingWithIdentityResolution();
@@ -63,7 +63,7 @@ namespace DataLayer
         public void Delete(int key)
         {
             Stadium stadiumFromDb = Read(key);
-            dbContext.Stadium.Remove(stadiumFromDb);
+            dbContext.Stadiums.Remove(stadiumFromDb);
             dbContext.SaveChanges();
         }
     }
