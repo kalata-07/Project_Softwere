@@ -1,5 +1,5 @@
 ﻿using BuisnessLayer;
-using DataLayer.BusinessLayer;
+using DataLayer;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;

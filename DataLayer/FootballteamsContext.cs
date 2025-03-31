@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using BuisnessLayer;
 using Microsoft.EntityFrameworkCore;
 
-namespace DataLayer.BusinessLayer;
+namespace DataLayer;
 
 public partial class FootballteamsContext : DbContext
 {
