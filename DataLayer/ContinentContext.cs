@@ -1,4 +1,5 @@
-﻿using DataLayer.BusinessLayer;
+﻿using BuisnessLayer;
+using DataLayer.BusinessLayer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Internal;
 using System;
@@ -7,6 +8,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace DataLayer
 {

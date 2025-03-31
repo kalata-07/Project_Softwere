@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using BuisnessLayer;
 using Microsoft.EntityFrameworkCore;
 
 namespace DataLayer.BusinessLayer;

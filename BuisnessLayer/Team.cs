@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace DataLayer.BusinessLayer;
+namespace BuisnessLayer;
 
 public partial class Team
 {
