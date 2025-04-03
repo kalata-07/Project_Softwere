@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 namespace BuisnessLayer;
-    public partial class Country
+    public class Country
     {
         public string CountryCode { get; set; } = null!;
 
