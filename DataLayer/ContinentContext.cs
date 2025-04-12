@@ -12,7 +12,7 @@ using System.Xml.Linq;
 
 namespace DataLayer
 {
-    internal class ContinentContext : IDb<Continent, string>
+    public class ContinentContext : IDb<Continent, string>
     {
         private FootballteamsContext dbContext;
 
@@ -40,7 +40,14 @@ namespace DataLayer
                 query = query.AsNoTracking();
             }
 
-            return query.FirstOrDefault(c => c.ContinentCode == key);
+            Continent continent = query.FirstOrDefault(c => c.ContinentCode == key);
+
+            if (continent == null)
+            {
+                throw new ArgumentException($"Continent with ContinentCode '{key}' not found!");
+            }
+
+            return continent;
         }
         public List<Continent> ReadAll(bool useNavigationalProperties = false, bool isReadOnly = false)
         {
