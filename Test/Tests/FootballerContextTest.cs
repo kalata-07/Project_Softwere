@@ -28,11 +28,11 @@ namespace Tests
         {
             Footballer footballer = new Footballer
             {
-                FirstName = "Lionel",
-                LastName = "Messi",
-                Age = 34,
-                TeamId = 1,
-                CountryCode = "ARG",
+                FirstName = "Cristiano",
+                LastName = "Ronaldo",
+                Age = 36,
+                TeamId = 2,
+                CountryCode = "POR",
                 TeamPosition = "Forward"
             };
 
@@ -68,14 +68,13 @@ namespace Tests
         {
             Footballer footballer1 = new Footballer
             {
-                FirstName = "Neymar",
-                LastName = "Jr",
-                Age = 29,
-                TeamId = 3,
-                CountryCode = "BRA",
+                FirstName = "Cristiano",
+                LastName = "Ronaldo",
+                Age = 36,
+                TeamId = 2,
+                CountryCode = "POR",
                 TeamPosition = "Forward"
             };
-
 
             footballerContext.Create(footballer1);
 
@@ -88,12 +87,12 @@ namespace Tests
         {
             Footballer footballer = new Footballer
             {
-                FirstName = "Sergio",
-                LastName = "Ramos",
-                Age = 35,
-                TeamId = 4,
-                CountryCode = "ESP",
-                TeamPosition = "Defender"
+                FirstName = "Cristiano",
+                LastName = "Ronaldo",
+                Age = 36,
+                TeamId = 2,
+                CountryCode = "POR",
+                TeamPosition = "Forward"
             };
 
             footballerContext.Create(footballer);
@@ -110,12 +109,12 @@ namespace Tests
         {
             Footballer footballer = new Footballer
             {
-                FirstName = "Luka",
-                LastName = "Modric",
-                Age = 35,
-                TeamId = 5,
-                CountryCode = "CRO",
-                TeamPosition = "Midfielder"
+                FirstName = "Cristiano",
+                LastName = "Ronaldo",
+                Age = 36,
+                TeamId = 2,
+                CountryCode = "POR",
+                TeamPosition = "Forward"
             };
 
             footballerContext.Create(footballer);

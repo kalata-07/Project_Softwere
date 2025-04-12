@@ -87,7 +87,7 @@ namespace DataLayer
                 throw new ArgumentException("CountryCode is required.");
             }
 
-            var existing = dbContext.Countries.Find(item.CountryCode);
+            Country existing = dbContext.Countries.Find(item.CountryCode);
             if (existing == null)
             {
                 throw new ArgumentException($"Country with CountryCode '{item.CountryCode}' not found!");
@@ -101,7 +101,7 @@ namespace DataLayer
 
         public void Delete(string key)
         {
-            var existing = dbContext.Countries.Find(key);
+            Country existing = dbContext.Countries.Find(key);
             if (existing == null)
             {
                 throw new ArgumentException($"Country with CountryCode '{key}' not found!");
