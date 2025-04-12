@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using BuisnessLayer;
+using BusinessLayer;
 using Microsoft.EntityFrameworkCore;
 
 namespace DataLayer

@@ -1,20 +1,12 @@
-﻿using BusinessLayer;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
-namespace BuisnessLayer;
-<<<<<<< HEAD
-    public class Country
-=======
-<<<<<<< HEAD
+namespace BusinessLayer;
     public partial class Country
->>>>>>> 8b23668 (Our version of Business Layer classes)
-    {
-        public string CountryCode { get; set; } = null!;
-=======
->>>>>>> fc9834e (Removed unnessecary folder)
+{
 
         public string CountryName { get; set; } = null!;
+        public string CountryCode { get; set; } = null!;
 
         public string ContinentCode { get; set; } = null!;
 

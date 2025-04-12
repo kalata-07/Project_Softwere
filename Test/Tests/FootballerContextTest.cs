@@ -1,4 +1,4 @@
-﻿using BuisnessLayer;
+﻿using BusinessLayer;
 using DataLayer;
 using Microsoft.EntityFrameworkCore;
 using NUnit.Framework;

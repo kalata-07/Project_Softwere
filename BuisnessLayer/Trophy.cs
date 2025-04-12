@@ -1,8 +1,7 @@
-﻿using BusinessLayer;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
-namespace BuisnessLayer;
+namespace BusinessLayer;
 
 public partial class Trophy
 {
