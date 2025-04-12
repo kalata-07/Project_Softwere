@@ -5,24 +5,24 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DataLayer
 {
-    public partial class FootballteamsContext : DbContext
+    public partial class DBLibraryContext : DbContext
     {
-        public FootballteamsContext()
+        public DBLibraryContext()
         {
         }
 
-        public FootballteamsContext(DbContextOptionsBuilder builder)
+        public DBLibraryContext(DbContextOptionsBuilder builder)
         {
             var options = builder.Options;
             this.Database.EnsureCreated();
         }
 
-        public FootballteamsContext(DbContextOptions<FootballteamsContext> options)
+        public DBLibraryContext(DbContextOptions<DBLibraryContext> options)
             : base(options)
         {
         }
 
-        public FootballteamsContext(DbContextOptions options) : base(options)
+        public DBLibraryContext(DbContextOptions options) : base(options)
         {
         }
 

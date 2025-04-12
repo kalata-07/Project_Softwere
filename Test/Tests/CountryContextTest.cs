@@ -15,10 +15,10 @@ namespace Tests
         [SetUp]
         public void Setup()
         {
-            DbContextOptions<FootballteamsContext> options = new DbContextOptionsBuilder<FootballteamsContext>()
+            DbContextOptions<DBLibraryContext> options = new DbContextOptionsBuilder<DBLibraryContext>()
                 .UseInMemoryDatabase(databaseName: "FootballteamsTestDb")
                 .Options;
-            dbContext = new FootballteamsContext(options);
+            dbContext = new DBLibraryContext(options);
             countriesContext = new CountryContext(dbContext);
         }
 

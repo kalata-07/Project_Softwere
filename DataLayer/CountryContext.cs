@@ -8,9 +8,9 @@ namespace DataLayer
 {
     public class CountryContext : IDb<Country, string>
     {
-        private readonly FootballteamsContext dbContext;
+        private readonly DBLibraryContext dbContext;
 
-        public CountryContext(FootballteamsContext dbContext)
+        public CountryContext(DBLibraryContext dbContext)
         {
             this.dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
         }

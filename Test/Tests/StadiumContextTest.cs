@@ -17,10 +17,10 @@ namespace Tests
         [SetUp]
         public void Setup()
         {
-            DbContextOptions<FootballteamsContext> options = new DbContextOptionsBuilder<FootballteamsContext>()
+            DbContextOptions<DBLibraryContext> options = new DbContextOptionsBuilder<DBLibraryContext>()
                 .UseInMemoryDatabase(databaseName: "FootballteamsTest")
                 .Options;
-            FootballteamsContext dbContext = new FootballteamsContext(options);
+            DBLibraryContext dbContext = new DBLibraryContext(options);
             stadiumContext = new StadiumContext(dbContext);
         }
 

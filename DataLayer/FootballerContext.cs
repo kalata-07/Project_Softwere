@@ -9,9 +9,9 @@ namespace DataLayer
 {
     public class FootballerContext : IDb<Footballer, int>
     {
-        private FootballteamsContext dbContext;
+        private DBLibraryContext dbContext;
 
-        public FootballerContext(FootballteamsContext dbContext)
+        public FootballerContext(DBLibraryContext dbContext)
         {
             this.dbContext = dbContext;
         }

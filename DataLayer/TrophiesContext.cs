@@ -11,9 +11,9 @@ namespace DataLayer
 {
     public class TrophiesContext : IDb<Trophy, int>
     {
-        private FootballteamsContext dbContext;
+        private DBLibraryContext dbContext;
 
-        public TrophiesContext(FootballteamsContext dbContext)
+        public TrophiesContext(DBLibraryContext dbContext)
         {
             this.dbContext = dbContext;
         }

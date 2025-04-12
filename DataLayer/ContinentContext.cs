@@ -14,9 +14,9 @@ namespace DataLayer
 {
     public class ContinentContext : IDb<Continent, string>
     {
-        private FootballteamsContext dbContext;
+        private DBLibraryContext dbContext;
 
-        public ContinentContext(FootballteamsContext dbContext)
+        public ContinentContext(DBLibraryContext dbContext)
         {
             this.dbContext = dbContext;
         }

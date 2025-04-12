@@ -7,13 +7,13 @@ namespace Tests
     [TestFixture]
     public class TestManager
     {
-        internal static FootballteamsContext dbContext;
+        internal static DBLibraryContext dbContext;
         
         static TestManager()
         {
             DbContextOptionsBuilder builder = new DbContextOptionsBuilder();
             builder.UseInMemoryDatabase("TestDb");
-            dbContext = new FootballteamsContext(builder.Options);
+            dbContext = new DBLibraryContext(builder.Options);
 
         }
 
