@@ -14,7 +14,6 @@ namespace Tests
             DbContextOptionsBuilder builder = new DbContextOptionsBuilder();
             builder.UseInMemoryDatabase("TestDb");
             dbContext = new DBLibraryContext(builder.Options);
-
         }
 
         [OneTimeTearDown]

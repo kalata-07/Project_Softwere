@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BuisnessLayer\BuisnessLayer.csproj" />
+    <ProjectReference Include="..\BuisnessLayer\BusinessLayer.csproj" />
   </ItemGroup>
 
 </Project>
