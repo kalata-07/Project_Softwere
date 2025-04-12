@@ -1,36 +1,47 @@
 ﻿using BuisnessLayer;
-using DataLayer;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataLayer
 {
-    internal class CountryContext : IDb<Country, string>
+    public class CountryContext : IDb<Country, string>
     {
-        private FootballteamsContext dbContext;
+        private readonly FootballteamsContext dbContext;
 
         public CountryContext(FootballteamsContext dbContext)
         {
-            this.dbContext = dbContext;
+            this.dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
         }
 
         public void Create(Country item)
         {
+            if (string.IsNullOrEmpty(item.CountryCode) || string.IsNullOrEmpty(item.CountryName) || string.IsNullOrEmpty(item.ContinentCode))
+            {
+                throw new ArgumentException("CountryCode, CountryName, and ContinentCode are required.");
+            }
+
+            if (dbContext.Countries.Any(c => c.CountryCode == item.CountryCode))
+            {
+                throw new InvalidOperationException($"A country with code '{item.CountryCode}' already exists.");
+            }
+
             dbContext.Countries.Add(item);
             dbContext.SaveChanges();
         }
 
-        public Country Read(string key, bool useNavigationalProperties = false, bool isReadOnly = false)
+        public Country Read(string key, bool useNavigationalProperties = false, bool isReadOnly = true)
         {
             IQueryable<Country> query = dbContext.Countries;
 
             if (useNavigationalProperties)
             {
-                query = query.Include(c => c.ContinentCode);
+                query = query.Include(c => c.ContinentCodeNavigation)
+                             .Include(c => c.Footballers)
+                             .Include(c => c.Stadium)
+                             .Include(c => c.Teams)
+                             .Include(c => c.Trophies);
             }
 
             if (isReadOnly)
@@ -38,7 +49,14 @@ namespace DataLayer
                 query = query.AsNoTracking();
             }
 
-            return query.FirstOrDefault(c => c.CountryCode == key);
+            Country country = query.FirstOrDefault(c => c.CountryCode == key);
+
+            if (country == null)
+            {
+                throw new ArgumentException($"Country with CountryCode '{key}' not found!");
+            }
+
+            return country;
         }
 
         public List<Country> ReadAll(bool useNavigationalProperties = false, bool isReadOnly = false)
@@ -47,7 +65,11 @@ namespace DataLayer
 
             if (useNavigationalProperties)
             {
-                query = query.Include(c => c.ContinentCode);
+                query = query.Include(c => c.ContinentCodeNavigation)
+                             .Include(c => c.Footballers)
+                             .Include(c => c.Stadium)
+                             .Include(c => c.Teams)
+                             .Include(c => c.Trophies);
             }
 
             if (isReadOnly)
@@ -60,22 +82,29 @@ namespace DataLayer
 
         public void Update(Country item, bool useNavigationalProperties = false)
         {
-            Country existing = Read(item.CountryCode, useNavigationalProperties);
-            if (existing == null)
+            if (string.IsNullOrEmpty(item.CountryCode))
             {
-                throw new ArgumentException("Country not found!");
+                throw new ArgumentException("CountryCode is required.");
             }
 
-            dbContext.Entry(existing).CurrentValues.SetValues(item);
+            Country existing = dbContext.Countries.Find(item.CountryCode);
+            if (existing == null)
+            {
+                throw new ArgumentException($"Country with CountryCode '{item.CountryCode}' not found!");
+            }
+
+            dbContext.Entry(existing).State = EntityState.Detached;  
+            dbContext.Entry(item).State = EntityState.Modified;      
+
             dbContext.SaveChanges();
         }
 
         public void Delete(string key)
         {
-            Country existing = Read(key);
+            Country existing = dbContext.Countries.Find(key);
             if (existing == null)
             {
-                throw new ArgumentException("Country not found!");
+                throw new ArgumentException($"Country with CountryCode '{key}' not found!");
             }
 
             dbContext.Countries.Remove(existing);

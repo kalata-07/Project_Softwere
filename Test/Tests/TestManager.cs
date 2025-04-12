@@ -1,19 +1,33 @@
-﻿namespace Tests
+﻿using DataLayer;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
+
+namespace Tests
 {
-
-
     [TestFixture]
     public class TestManager
     {
-        [SetUp]
-        public void Setup()
+        internal static FootballteamsContext dbContext;
+        
+        static TestManager()
         {
+            DbContextOptionsBuilder builder = new DbContextOptionsBuilder();
+            builder.UseInMemoryDatabase("TestDb");
+            dbContext = new FootballteamsContext(builder.Options);
+
         }
 
-        [Test]
-        public void Test1()
+        [OneTimeTearDown]
+        public void TearDown()
         {
-            Assert.Pass();
+            dbContext.Dispose();
+        }
+
+
+        [Test]
+        public void Test()
+        {
+          Assert.Pass();
         }
     }
 }
