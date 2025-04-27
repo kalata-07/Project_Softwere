@@ -62,6 +62,7 @@
             footballersbtn.TabIndex = 2;
             footballersbtn.Text = "Footballers";
             footballersbtn.UseVisualStyleBackColor = true;
+            footballersbtn.Click += footballersbtn_Click;
             // 
             // stadiumsbtn
             // 
