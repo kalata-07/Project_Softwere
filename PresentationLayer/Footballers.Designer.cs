@@ -49,8 +49,8 @@
             readallbtn = new Button();
             updatebtn = new Button();
             deletebtn = new Button();
-            dataGridView1 = new DataGridView();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            footballersread = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)footballersread).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -197,6 +197,7 @@
             createbtn.TabIndex = 17;
             createbtn.Text = "Create";
             createbtn.UseVisualStyleBackColor = true;
+            createbtn.Click += createbtn_Click;
             // 
             // readallbtn
             // 
@@ -206,6 +207,7 @@
             readallbtn.TabIndex = 18;
             readallbtn.Text = "Read All";
             readallbtn.UseVisualStyleBackColor = true;
+            readallbtn.Click += readallbtn_Click;
             // 
             // updatebtn
             // 
@@ -225,21 +227,22 @@
             deletebtn.Text = "Delete";
             deletebtn.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // footballersread
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(433, 115);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(300, 188);
-            dataGridView1.TabIndex = 21;
+            footballersread.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            footballersread.Location = new Point(307, 24);
+            footballersread.Name = "footballersread";
+            footballersread.RowHeadersWidth = 51;
+            footballersread.Size = new Size(449, 279);
+            footballersread.TabIndex = 21;
+            footballersread.CellContentClick += footballersread_CellContentClick;
             // 
             // FootballersForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(dataGridView1);
+            Controls.Add(footballersread);
             Controls.Add(deletebtn);
             Controls.Add(updatebtn);
             Controls.Add(readallbtn);
@@ -263,7 +266,8 @@
             Controls.Add(label1);
             Name = "FootballersForm";
             Text = "Footballers";
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            Load += FootballersForm_Load;
+            ((System.ComponentModel.ISupportInitialize)footballersread).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -291,6 +295,6 @@
         private Button readallbtn;
         private Button updatebtn;
         private Button deletebtn;
-        private DataGridView dataGridView1;
+        private DataGridView footballersread;
     }
 }
