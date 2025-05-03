@@ -11,11 +11,6 @@ namespace DataLayer
         {
         }
 
-        public DBLibraryContext(DbContextOptionsBuilder builder)
-        {
-            var options = builder.Options;
-            this.Database.EnsureCreated();
-        }
 
         public DBLibraryContext(DbContextOptions<DBLibraryContext> options)
             : base(options)
@@ -44,12 +39,14 @@ namespace DataLayer
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseMySQL("Server=127.0.0.1;Database=footballteams;User Id=root;Password=Maritsa_154;");
+                optionsBuilder.UseMySQL("Server=127.0.0.1;Database=footballteams;Uid=root;Pwd=R00t!R00t!;");
+                optionsBuilder.LogTo(Console.WriteLine);
             }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+          
             modelBuilder.Entity<Continent>(entity =>
             {
                 entity.HasKey(e => e.ContinentCode).HasName("PRIMARY");
@@ -94,6 +91,9 @@ namespace DataLayer
             modelBuilder.Entity<Footballer>(entity =>
             {
                 entity.HasKey(e => e.Id).HasName("PRIMARY");
+                entity.Property(e => e.Id)
+                    .HasColumnName("id")
+                    .ValueGeneratedOnAdd();
 
                 entity.ToTable("footballers");
 
@@ -135,6 +135,7 @@ namespace DataLayer
                     .HasForeignKey(d => d.TeamId)
                     .HasConstraintName("FK_FootballersTeams");
             });
+
 
             modelBuilder.Entity<Footballerstrophy>(entity =>
             {

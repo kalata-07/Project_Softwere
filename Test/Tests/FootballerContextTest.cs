@@ -48,11 +48,11 @@ namespace Tests
         {
             Footballer footballer = new Footballer
             {
-                FirstName = "Cristiano",
-                LastName = "Ronaldo",
-                Age = 36,
-                TeamId = 2,
-                CountryCode = "POR",
+                FirstName = "Lionel",
+                LastName = "Messi",
+                Age = 34,
+                TeamId = 1,
+                CountryCode = "ARG",
                 TeamPosition = "Forward"
             };
 
@@ -68,11 +68,11 @@ namespace Tests
         {
             Footballer footballer1 = new Footballer
             {
-                FirstName = "Cristiano",
-                LastName = "Ronaldo",
-                Age = 36,
-                TeamId = 2,
-                CountryCode = "POR",
+                FirstName = "Neymar",
+                LastName = "Jr",
+                Age = 29,
+                TeamId = 3,
+                CountryCode = "BRA",
                 TeamPosition = "Forward"
             };
 
@@ -87,12 +87,12 @@ namespace Tests
         {
             Footballer footballer = new Footballer
             {
-                FirstName = "Cristiano",
-                LastName = "Ronaldo",
-                Age = 36,
-                TeamId = 2,
-                CountryCode = "POR",
-                TeamPosition = "Forward"
+                FirstName = "Sergio",
+                LastName = "Ramos",
+                Age = 35,
+                TeamId = 4,
+                CountryCode = "ESP",
+                TeamPosition = "Defender"
             };
 
             footballerContext.Create(footballer);
@@ -109,12 +109,12 @@ namespace Tests
         {
             Footballer footballer = new Footballer
             {
-                FirstName = "Cristiano",
-                LastName = "Ronaldo",
-                Age = 36,
-                TeamId = 2,
-                CountryCode = "POR",
-                TeamPosition = "Forward"
+                FirstName = "Luka",
+                LastName = "Modric",
+                Age = 35,
+                TeamId = 5,
+                CountryCode = "CRO",
+                TeamPosition = "Midfielder"
             };
 
             footballerContext.Create(footballer);

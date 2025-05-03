@@ -19,5 +19,11 @@ namespace PresentationLayer
             FootballersForm footballersForm = new FootballersForm();
             footballersForm.ShowDialog();
         }
+
+        private void countriesbtn_Click(object sender, EventArgs e)
+        {
+            CountriesForm countriesForm = new CountriesForm();
+            countriesForm.ShowDialog();
+        }
     }
 }

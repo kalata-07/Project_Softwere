@@ -43,20 +43,24 @@
             shirtnumbertb = new TextBox();
             teampositiontb = new TextBox();
             countrycodetb = new TextBox();
-            pricetb = new TextBox();
+            trophiestb = new TextBox();
             salarytb = new TextBox();
             createbtn = new Button();
             readallbtn = new Button();
             updatebtn = new Button();
             deletebtn = new Button();
-            footballersread = new DataGridView();
-            ((System.ComponentModel.ISupportInitialize)footballersread).BeginInit();
+            footballersdatagrid = new DataGridView();
+            label10 = new Label();
+            teamidtb = new TextBox();
+            idtb = new TextBox();
+            label11 = new Label();
+            ((System.ComponentModel.ISupportInitialize)footballersdatagrid).BeginInit();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(30, 27);
+            label1.Location = new Point(30, 51);
             label1.Name = "label1";
             label1.Size = new Size(77, 20);
             label1.TabIndex = 0;
@@ -65,7 +69,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(30, 64);
+            label2.Location = new Point(30, 91);
             label2.Name = "label2";
             label2.Size = new Size(76, 20);
             label2.TabIndex = 1;
@@ -74,7 +78,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(12, 131);
+            label3.Location = new Point(13, 162);
             label3.Name = "label3";
             label3.Size = new Size(94, 20);
             label3.TabIndex = 2;
@@ -83,7 +87,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(70, 98);
+            label4.Location = new Point(70, 126);
             label4.Name = "label4";
             label4.Size = new Size(36, 20);
             label4.TabIndex = 3;
@@ -92,7 +96,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(4, 167);
+            label5.Location = new Point(3, 198);
             label5.Name = "label5";
             label5.Size = new Size(103, 20);
             label5.TabIndex = 4;
@@ -101,7 +105,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(9, 208);
+            label6.Location = new Point(9, 231);
             label6.Name = "label6";
             label6.Size = new Size(97, 20);
             label6.TabIndex = 5;
@@ -118,16 +122,16 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(62, 246);
+            label8.Location = new Point(42, 264);
             label8.Name = "label8";
-            label8.Size = new Size(41, 20);
+            label8.Size = new Size(65, 20);
             label8.TabIndex = 7;
-            label8.Text = "Price";
+            label8.Text = "Trophies";
             // 
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(57, 279);
+            label9.Location = new Point(57, 297);
             label9.Name = "label9";
             label9.Size = new Size(49, 20);
             label9.TabIndex = 8;
@@ -135,63 +139,63 @@
             // 
             // fnametb
             // 
-            fnametb.Location = new Point(112, 24);
+            fnametb.Location = new Point(112, 48);
             fnametb.Name = "fnametb";
             fnametb.Size = new Size(125, 27);
             fnametb.TabIndex = 9;
             // 
             // lnametb
             // 
-            lnametb.Location = new Point(112, 61);
+            lnametb.Location = new Point(112, 88);
             lnametb.Name = "lnametb";
             lnametb.Size = new Size(125, 27);
             lnametb.TabIndex = 10;
             // 
             // agetb
             // 
-            agetb.Location = new Point(112, 95);
+            agetb.Location = new Point(112, 123);
             agetb.Name = "agetb";
             agetb.Size = new Size(125, 27);
             agetb.TabIndex = 11;
             // 
             // shirtnumbertb
             // 
-            shirtnumbertb.Location = new Point(112, 128);
+            shirtnumbertb.Location = new Point(112, 159);
             shirtnumbertb.Name = "shirtnumbertb";
             shirtnumbertb.Size = new Size(125, 27);
             shirtnumbertb.TabIndex = 12;
             // 
             // teampositiontb
             // 
-            teampositiontb.Location = new Point(112, 164);
+            teampositiontb.Location = new Point(112, 195);
             teampositiontb.Name = "teampositiontb";
             teampositiontb.Size = new Size(125, 27);
             teampositiontb.TabIndex = 13;
             // 
             // countrycodetb
             // 
-            countrycodetb.Location = new Point(112, 205);
+            countrycodetb.Location = new Point(112, 228);
             countrycodetb.Name = "countrycodetb";
             countrycodetb.Size = new Size(125, 27);
             countrycodetb.TabIndex = 14;
             // 
-            // pricetb
+            // trophiestb
             // 
-            pricetb.Location = new Point(112, 243);
-            pricetb.Name = "pricetb";
-            pricetb.Size = new Size(125, 27);
-            pricetb.TabIndex = 15;
+            trophiestb.Location = new Point(112, 261);
+            trophiestb.Name = "trophiestb";
+            trophiestb.Size = new Size(125, 27);
+            trophiestb.TabIndex = 15;
             // 
             // salarytb
             // 
-            salarytb.Location = new Point(112, 276);
+            salarytb.Location = new Point(112, 294);
             salarytb.Name = "salarytb";
             salarytb.Size = new Size(125, 27);
             salarytb.TabIndex = 16;
             // 
             // createbtn
             // 
-            createbtn.Location = new Point(30, 342);
+            createbtn.Location = new Point(30, 369);
             createbtn.Name = "createbtn";
             createbtn.Size = new Size(140, 60);
             createbtn.TabIndex = 17;
@@ -201,7 +205,7 @@
             // 
             // readallbtn
             // 
-            readallbtn.Location = new Point(190, 342);
+            readallbtn.Location = new Point(190, 369);
             readallbtn.Name = "readallbtn";
             readallbtn.Size = new Size(140, 60);
             readallbtn.TabIndex = 18;
@@ -211,44 +215,81 @@
             // 
             // updatebtn
             // 
-            updatebtn.Location = new Point(352, 342);
+            updatebtn.Location = new Point(352, 369);
             updatebtn.Name = "updatebtn";
             updatebtn.Size = new Size(140, 60);
             updatebtn.TabIndex = 19;
             updatebtn.Text = "Update";
             updatebtn.UseVisualStyleBackColor = true;
+            updatebtn.Click += updatebtn_Click;
             // 
             // deletebtn
             // 
-            deletebtn.Location = new Point(512, 342);
+            deletebtn.Location = new Point(512, 369);
             deletebtn.Name = "deletebtn";
             deletebtn.Size = new Size(140, 60);
             deletebtn.TabIndex = 20;
             deletebtn.Text = "Delete";
             deletebtn.UseVisualStyleBackColor = true;
+            deletebtn.Click += deletebtn_Click;
             // 
-            // footballersread
+            // footballersdatagrid
             // 
-            footballersread.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            footballersread.Location = new Point(307, 24);
-            footballersread.Name = "footballersread";
-            footballersread.RowHeadersWidth = 51;
-            footballersread.Size = new Size(449, 279);
-            footballersread.TabIndex = 21;
-            footballersread.CellContentClick += footballersread_CellContentClick;
+            footballersdatagrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            footballersdatagrid.Location = new Point(275, 15);
+            footballersdatagrid.Name = "footballersdatagrid";
+            footballersdatagrid.RowHeadersWidth = 51;
+            footballersdatagrid.Size = new Size(493, 336);
+            footballersdatagrid.TabIndex = 21;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Location = new Point(44, 331);
+            label10.Name = "label10";
+            label10.Size = new Size(62, 20);
+            label10.TabIndex = 22;
+            label10.Text = "Team Id";
+            // 
+            // teamidtb
+            // 
+            teamidtb.Location = new Point(112, 328);
+            teamidtb.Name = "teamidtb";
+            teamidtb.Size = new Size(125, 27);
+            teamidtb.TabIndex = 23;
+            // 
+            // idtb
+            // 
+            idtb.Location = new Point(112, 12);
+            idtb.Name = "idtb";
+            idtb.Size = new Size(125, 27);
+            idtb.TabIndex = 24;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Location = new Point(70, 15);
+            label11.Name = "label11";
+            label11.Size = new Size(22, 20);
+            label11.TabIndex = 25;
+            label11.Text = "Id";
             // 
             // FootballersForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(footballersread);
+            Controls.Add(label11);
+            Controls.Add(idtb);
+            Controls.Add(teamidtb);
+            Controls.Add(label10);
+            Controls.Add(footballersdatagrid);
             Controls.Add(deletebtn);
             Controls.Add(updatebtn);
             Controls.Add(readallbtn);
             Controls.Add(createbtn);
             Controls.Add(salarytb);
-            Controls.Add(pricetb);
+            Controls.Add(trophiestb);
             Controls.Add(countrycodetb);
             Controls.Add(teampositiontb);
             Controls.Add(shirtnumbertb);
@@ -267,7 +308,7 @@
             Name = "FootballersForm";
             Text = "Footballers";
             Load += FootballersForm_Load;
-            ((System.ComponentModel.ISupportInitialize)footballersread).EndInit();
+            ((System.ComponentModel.ISupportInitialize)footballersdatagrid).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -289,12 +330,16 @@
         private TextBox shirtnumbertb;
         private TextBox teampositiontb;
         private TextBox countrycodetb;
-        private TextBox pricetb;
+        private TextBox trophiestb;
         private TextBox salarytb;
         private Button createbtn;
         private Button readallbtn;
         private Button updatebtn;
         private Button deletebtn;
-        private DataGridView footballersread;
+        private DataGridView footballersdatagrid;
+        private Label label10;
+        private TextBox teamidtb;
+        private TextBox idtb;
+        private Label label11;
     }
 }
