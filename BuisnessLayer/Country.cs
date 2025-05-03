@@ -11,7 +11,6 @@ namespace BusinessLayer;
 
         public string CountryName { get; set; } = null!;
 
-
         public string ContinentCode { get; set; } = null!;
 
         public virtual Continent ContinentCodeNavigation { get; set; } = null!;
