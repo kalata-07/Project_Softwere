@@ -17,14 +17,11 @@ namespace DataLayer
 
         public void Create(Country item)
         {
-            if (string.IsNullOrEmpty(item.CountryCode) || string.IsNullOrEmpty(item.CountryName) || string.IsNullOrEmpty(item.ContinentCode))
-            {
-                throw new ArgumentException("CountryCode, CountryName, and ContinentCode are required.");
-            }
+            var existingCountry = dbContext.Countries.FirstOrDefault(c => c.CountryCode == item.CountryCode);
 
-            if (dbContext.Countries.Any(c => c.CountryCode == item.CountryCode))
+            if (existingCountry != null)
             {
-                throw new InvalidOperationException($"A country with code '{item.CountryCode}' already exists.");
+                throw new ArgumentException($"Country with code '{item.CountryCode}' already exists.");
             }
 
             dbContext.Countries.Add(item);

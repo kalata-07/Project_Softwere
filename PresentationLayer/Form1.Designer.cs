@@ -53,6 +53,7 @@
             countriesbtn.TabIndex = 1;
             countriesbtn.Text = "Countries";
             countriesbtn.UseVisualStyleBackColor = true;
+            countriesbtn.Click += countriesbtn_Click;
             // 
             // footballersbtn
             // 
