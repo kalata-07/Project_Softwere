@@ -101,31 +101,28 @@ namespace PresentationLayer
         {
             try
             {
-                if (footballersdatagrid.CurrentRow == null || footballersdatagrid.CurrentRow.DataBoundItem == null)
+                Footballer footballer = new Footballer
                 {
-                    MessageBox.Show("Please select a footballer to update.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
+                    Id = int.Parse(idtb.Text.Trim()),
+                    FirstName = fnametb.Text.Trim(),
+                    LastName = lnametb.Text.Trim(),
+                    Age = int.Parse(agetb.Text.Trim()),
+                    ShirtNumber = int.Parse(shirtnumbertb.Text.Trim()),
+                    TeamPosition = teampositiontb.Text.Trim(),
+                    CountryCode = countrycodetb.Text.Trim(),
+                    Trophies = int.Parse(trophiestb.Text.Trim()),
+                    Salary = decimal.Parse(salarytb.Text.Trim()),
+                    TeamId = int.Parse(teamidtb.Text.Trim())
+                };
 
-                Footballer selected = footballersdatagrid.CurrentRow.DataBoundItem as Footballer;
-
-                selected.FirstName = fnametb.Text;
-                selected.LastName = lnametb.Text;
-                selected.CountryCode = countrycodetb.Text;
-                selected.TeamPosition = teampositiontb.Text;
-                selected.Age = Convert.ToInt32(agetb.Text);
-                selected.ShirtNumber = Convert.ToInt32(shirtnumbertb.Text);
-                selected.Salary = Convert.ToDecimal(salarytb.Text);
-                selected.Trophies = Convert.ToInt32(trophiestb.Text);
-                selected.TeamId = int.Parse(teamidtb.Text);
-
-                footballerManager.Update(selected, true);
-                MessageBox.Show("Footballer updated successfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                footballerManager.Update(footballer);
+                MessageBox.Show("Footballer updated successfully.");
                 LoadFootballers();
+                ClearForm();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error updating footballer: " + ex.Message);
             }
         }
 
@@ -133,28 +130,16 @@ namespace PresentationLayer
         {
             try
             {
-                if (footballersdatagrid.CurrentRow == null || footballersdatagrid.CurrentRow.DataBoundItem == null)
-                {
-                    MessageBox.Show("Please select a footballer to delete.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                Footballer selected = footballersdatagrid.CurrentRow.DataBoundItem as Footballer;
-
-                DialogResult result = MessageBox.Show($"Are you sure you want to delete {selected.FirstName} {selected.LastName}?",
-                    "Confirm Deletion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-
-                if (result == DialogResult.Yes)
-                {
-                    footballerManager.Delete(selected.Id);
-                    MessageBox.Show("Footballer deleted successfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LoadFootballers();
-                }
+                int id = int.Parse(idtb.Text.Trim());
+                footballerManager.Delete(id);
+                MessageBox.Show("Footballer deleted successfully.");
+                LoadFootballers();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error deleting footballer: " + ex.Message);
             }
+            ClearForm();
         }
     }
 }

@@ -79,22 +79,20 @@ namespace PresentationLayer
         {
             try
             {
-                if (countriesDataGrid.CurrentRow?.DataBoundItem is not Country selected)
+                Country country = new Country
                 {
-                    MessageBox.Show("Select a country to update.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
+                    CountryCode = countrycodetb.Text,
+                    CountryName = countrynametb.Text,
+                    ContinentCode = continentcodetb.Text
+                };
 
-                selected.CountryName = countrynametb.Text;
-                selected.ContinentCode = continentcodetb.Text;
-
-                countryManager.Update(selected);
-                MessageBox.Show("Country updated successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                countryManager.Update(country);
+                MessageBox.Show("Country updated successfully.");
                 LoadCountries();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Update Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error updating country: " + ex.Message);
             }
         }
 
@@ -102,24 +100,14 @@ namespace PresentationLayer
         {
             try
             {
-                if (countriesDataGrid.CurrentRow?.DataBoundItem is not Country selected)
-                {
-                    MessageBox.Show("Select a country to delete.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                DialogResult result = MessageBox.Show($"Delete country {selected.CountryName}?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-
-                if (result == DialogResult.Yes)
-                {
-                    countryManager.Delete(selected.CountryCode);
-                    MessageBox.Show("Country deleted.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LoadCountries();
-                }
+                string code = countrycodetb.Text.Trim();
+                countryManager.Delete(code);
+                MessageBox.Show("Country deleted successfully.");
+                LoadCountries();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Delete Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error deleting country: " + ex.Message);
             }
         }
 
