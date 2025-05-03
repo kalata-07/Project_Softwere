@@ -9,9 +9,7 @@ namespace ServiceLayer
 {
     public class LibraryManager<T, K>
     {
-        private readonly IDb<T, K> context;
-       
-        private IDb<T, K> context;
+        private readonly IDb<T, K> context;     
 
         public LibraryManager(IDb<T, K> context)
         {

@@ -39,7 +39,7 @@ namespace DataLayer
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseMySQL("Server=127.0.0.1;Database=footballteams;Uid=root;Pwd=R00t!R00t!;");
+                optionsBuilder.UseMySQL("Server=127.0.0.1;Database=footballteams;Uid=tedi;Pwd=root;");
                 optionsBuilder.LogTo(Console.WriteLine);
             }
         }
