@@ -84,6 +84,7 @@
             teamsbtn.TabIndex = 4;
             teamsbtn.Text = "Teams";
             teamsbtn.UseVisualStyleBackColor = true;
+            teamsbtn.Click += teamsbtn_Click;
             // 
             // trophiesbtn
             // 

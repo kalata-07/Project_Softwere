@@ -9,10 +9,19 @@ namespace ServiceLayer
 {
     public class LibraryManager<T, K>
     {
+<<<<<<< HEAD
 
         private readonly IDb<T, K> context;     
 
 
+=======
+<<<<<<< HEAD
+        private readonly IDb<T, K> context;     
+
+=======
+        private readonly IDb<T, K> context;
+>>>>>>> e4a17b8 (Added TeamsForm and TrophiesForm)
+>>>>>>> b29be4d (Added TeamsForm and TrophiesForm)
         public LibraryManager(IDb<T, K> context)
         {
             this.context = context;

@@ -15,10 +15,13 @@ namespace PresentationLayer
 {
     public partial class ContinentsForm : Form
     {
+<<<<<<< HEAD
         private LibraryManager<Continent, string> continentManager;
         private ContinentContext continentContext;
         private DBLibraryContext context;
 
+=======
+>>>>>>> b29be4d (Added TeamsForm and TrophiesForm)
         public ContinentsForm()
         {
             InitializeComponent();
@@ -117,6 +120,11 @@ namespace PresentationLayer
             {
                 MessageBox.Show("Error deleting continent: " + ex.Message);
             }
+        }
+
+        private void create_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
