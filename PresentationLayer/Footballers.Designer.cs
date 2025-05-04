@@ -309,8 +309,7 @@
             Text = "Footballers";
             Load += FootballersForm_Load;
             ((System.ComponentModel.ISupportInitialize)footballersdatagrid).EndInit();
-            ResumeLayout(false);
-            PerformLayout();
+
         }
 
         #endregion

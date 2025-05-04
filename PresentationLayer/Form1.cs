@@ -26,6 +26,18 @@ namespace PresentationLayer
             countriesForm.ShowDialog();
         }
 
+        private void teamsbtn_Click(object sender, EventArgs e)
+        {
+            TeamsForm teamsForm = new TeamsForm();
+            teamsForm.ShowDialog();
+        }
+
+        private void trophiesbtn_Click(object sender, EventArgs e)
+        {
+            TrophiesForm trophiesForm = new TrophiesForm();
+            trophiesForm.ShowDialog();
+        }
+
         private void stadiumssbtn_Click(object sender, EventArgs e)
         {
             StadiumsForm stadiumsForm = new StadiumsForm();

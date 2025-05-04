@@ -28,7 +28,7 @@ namespace DataLayer
         {
             IQueryable<Trophy> query = dbContext.Trophies;
 
-            if (useNavigationalProperties) query = query.Include(g => g.CountryCode).Include(g => g.ContinentCode);
+            if (useNavigationalProperties) query = query.Include(g => g.CountryCodeNavigation);
 
             if (isReadOnly) query = query.AsNoTrackingWithIdentityResolution();
 
@@ -43,7 +43,7 @@ namespace DataLayer
         {
             IQueryable<Trophy> query = dbContext.Trophies;
 
-            if (useNavigationalProperties) query = query.Include(g => g.CountryCode).Include(g => g.ContinentCode);
+            if (useNavigationalProperties) query = query.Include(g => g.CountryCodeNavigation);
             if (isReadOnly) query = query.AsNoTrackingWithIdentityResolution();
 
             return query.ToList();

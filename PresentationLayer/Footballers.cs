@@ -118,7 +118,6 @@ namespace PresentationLayer
                 footballerManager.Update(footballer);
                 MessageBox.Show("Footballer updated successfully.");
                 LoadFootballers();
-                ClearForm();
             }
             catch (Exception ex)
             {
