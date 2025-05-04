@@ -1,6 +1,6 @@
 ﻿namespace PresentationLayer
 {
-    partial class Stadium
+    partial class StadiumsForm
     {
         /// <summary>
         /// Required designer variable.
@@ -33,17 +33,17 @@
             id = new Label();
             townName = new Label();
             countryCode = new Label();
-            t5 = new TextBox();
-            t4 = new TextBox();
-            t3 = new TextBox();
-            t2 = new TextBox();
-            t1 = new TextBox();
+            townNametb = new TextBox();
+            countryCodetb = new TextBox();
+            capacitytb = new TextBox();
+            nametb = new TextBox();
+            idtb = new TextBox();
             delete = new Button();
             update = new Button();
             readAll = new Button();
             create = new Button();
-            dataGridView1 = new DataGridView();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            stadiumsDataGrid = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)stadiumsDataGrid).BeginInit();
             SuspendLayout();
             // 
             // capacity
@@ -81,7 +81,6 @@
             townName.Size = new Size(85, 20);
             townName.TabIndex = 4;
             townName.Text = "Town name";
-            townName.Click += ContinentCode_Click;
             // 
             // countryCode
             // 
@@ -92,40 +91,40 @@
             countryCode.TabIndex = 5;
             countryCode.Text = "Country code";
             // 
-            // t5
+            // townNametb
             // 
-            t5.Location = new Point(144, 232);
-            t5.Name = "t5";
-            t5.Size = new Size(125, 27);
-            t5.TabIndex = 10;
+            townNametb.Location = new Point(144, 232);
+            townNametb.Name = "townNametb";
+            townNametb.Size = new Size(125, 27);
+            townNametb.TabIndex = 10;
             // 
-            // t4
+            // countryCodetb
             // 
-            t4.Location = new Point(144, 185);
-            t4.Name = "t4";
-            t4.Size = new Size(125, 27);
-            t4.TabIndex = 11;
+            countryCodetb.Location = new Point(144, 185);
+            countryCodetb.Name = "countryCodetb";
+            countryCodetb.Size = new Size(125, 27);
+            countryCodetb.TabIndex = 11;
             // 
-            // t3
+            // capacitytb
             // 
-            t3.Location = new Point(144, 143);
-            t3.Name = "t3";
-            t3.Size = new Size(125, 27);
-            t3.TabIndex = 12;
+            capacitytb.Location = new Point(144, 143);
+            capacitytb.Name = "capacitytb";
+            capacitytb.Size = new Size(125, 27);
+            capacitytb.TabIndex = 12;
             // 
-            // t2
+            // nametb
             // 
-            t2.Location = new Point(144, 106);
-            t2.Name = "t2";
-            t2.Size = new Size(125, 27);
-            t2.TabIndex = 13;
+            nametb.Location = new Point(144, 106);
+            nametb.Name = "nametb";
+            nametb.Size = new Size(125, 27);
+            nametb.TabIndex = 13;
             // 
-            // t1
+            // idtb
             // 
-            t1.Location = new Point(144, 62);
-            t1.Name = "t1";
-            t1.Size = new Size(125, 27);
-            t1.TabIndex = 14;
+            idtb.Location = new Point(144, 62);
+            idtb.Name = "idtb";
+            idtb.Size = new Size(125, 27);
+            idtb.TabIndex = 14;
             // 
             // delete
             // 
@@ -135,6 +134,7 @@
             delete.TabIndex = 18;
             delete.Text = "Delete";
             delete.UseVisualStyleBackColor = true;
+            delete.Click += delete_Click;
             // 
             // update
             // 
@@ -144,6 +144,7 @@
             update.TabIndex = 19;
             update.Text = "Update";
             update.UseVisualStyleBackColor = true;
+            update.Click += update_Click;
             // 
             // readAll
             // 
@@ -153,6 +154,7 @@
             readAll.TabIndex = 20;
             readAll.Text = "Read All";
             readAll.UseVisualStyleBackColor = true;
+            readAll.Click += readAll_Click;
             // 
             // create
             // 
@@ -162,39 +164,41 @@
             create.TabIndex = 21;
             create.Text = "Create";
             create.UseVisualStyleBackColor = true;
+            create.Click += create_Click;
             // 
-            // dataGridView1
+            // stadiumsDataGrid
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(412, 71);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(300, 188);
-            dataGridView1.TabIndex = 23;
+            stadiumsDataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            stadiumsDataGrid.Location = new Point(412, 71);
+            stadiumsDataGrid.Name = "stadiumsDataGrid";
+            stadiumsDataGrid.RowHeadersWidth = 51;
+            stadiumsDataGrid.Size = new Size(300, 188);
+            stadiumsDataGrid.TabIndex = 23;
             // 
-            // Stadium
+            // StadiumsForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(dataGridView1);
+            Controls.Add(stadiumsDataGrid);
             Controls.Add(create);
             Controls.Add(readAll);
             Controls.Add(update);
             Controls.Add(delete);
-            Controls.Add(t1);
-            Controls.Add(t2);
-            Controls.Add(t3);
-            Controls.Add(t4);
-            Controls.Add(t5);
+            Controls.Add(idtb);
+            Controls.Add(nametb);
+            Controls.Add(capacitytb);
+            Controls.Add(countryCodetb);
+            Controls.Add(townNametb);
             Controls.Add(countryCode);
             Controls.Add(townName);
             Controls.Add(id);
             Controls.Add(name);
             Controls.Add(capacity);
-            Name = "Stadium";
+            Name = "StadiumsForm";
             Text = "Stadium";
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            Load += StadiumForm_Load;
+            ((System.ComponentModel.ISupportInitialize)stadiumsDataGrid).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -206,15 +210,15 @@
         private Label id;
         private Label townName;
         private Label countryCode;
-        private TextBox t5;
-        private TextBox t4;
-        private TextBox t3;
-        private TextBox t2;
-        private TextBox t1;
+        private TextBox townNametb;
+        private TextBox countryCodetb;
+        private TextBox capacitytb;
+        private TextBox nametb;
+        private TextBox idtb;
         private Button delete;
         private Button update;
         private Button readAll;
         private Button create;
-        private DataGridView dataGridView1;
+        private DataGridView stadiumsDataGrid;
     }
 }

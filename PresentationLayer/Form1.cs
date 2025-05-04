@@ -25,5 +25,17 @@ namespace PresentationLayer
             CountriesForm countriesForm = new CountriesForm();
             countriesForm.ShowDialog();
         }
+
+        private void stadiumssbtn_Click(object sender, EventArgs e)
+        {
+            StadiumsForm stadiumsForm = new StadiumsForm();
+            stadiumsForm.ShowDialog();
+        }
+
+        private void continentsbtn_Click(object sender, EventArgs e)
+        {
+            ContinentsForm continentsForm = new ContinentsForm();
+            continentsForm.ShowDialog();
+        }
     }
 }

@@ -157,6 +157,7 @@
             Controls.Add(label1);
             Name = "CountriesForm";
             Text = "Countries";
+            Load += CountryForm_Load;
             ((System.ComponentModel.ISupportInitialize)countriesDataGrid).EndInit();
             ResumeLayout(false);
             PerformLayout();
