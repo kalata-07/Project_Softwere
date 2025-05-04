@@ -44,6 +44,7 @@
             continentsbtn.TabIndex = 0;
             continentsbtn.Text = "Continents";
             continentsbtn.UseVisualStyleBackColor = true;
+            continentsbtn.Click += continentsbtn_Click_1;
             // 
             // countriesbtn
             // 

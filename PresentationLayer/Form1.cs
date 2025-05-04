@@ -44,10 +44,11 @@ namespace PresentationLayer
             stadiumsForm.ShowDialog();
         }
 
-        private void continentsbtn_Click(object sender, EventArgs e)
+        private void continentsbtn_Click_1(object sender, EventArgs e)
         {
             ContinentsForm continentsForm = new ContinentsForm();
             continentsForm.ShowDialog();
         }
+
     }
 }
