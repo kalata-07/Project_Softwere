@@ -101,29 +101,26 @@ namespace PresentationLayer
         {
             try
             {
-                if (teamdatagrid.CurrentRow == null || teamdatagrid.CurrentRow.DataBoundItem == null)
+
+                Team team = new Team
                 {
-                    MessageBox.Show("Please select a team to update.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
 
-                Team selected = teamdatagrid.CurrentRow.DataBoundItem as Team;
+                    Id = int.Parse(t1.Text.Trim()),
+                    Name = t2.Text.Trim(),
+                    CountryCode = t3.Text.Trim(),
+                    CoachName = t4.Text.Trim(),
+                    Colours = t4.Text.Trim(),
+                    Founded = int.Parse(t6.Text.Trim()),
+                    TeamStadium = t7.Text.Trim()
+                };
 
-                selected.Id = Convert.ToInt32(t1.Text);
-                selected.Name = t2.Text;
-                selected.CountryCode = t3.Text;
-                selected.CoachName = t4.Text;
-                selected.Colours = t4.Text;
-                selected.Founded = Convert.ToInt32(t6.Text);
-                selected.TeamStadium = t7.Text;
-
-                teamManager.Update(selected, true);
-                MessageBox.Show("Team updated successfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                teamManager.Update(team);
+                MessageBox.Show("Team updated successfully!");
                 LoadTeams();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error updating team: " + ex.Message);
             }
         }
 
@@ -131,28 +128,16 @@ namespace PresentationLayer
         {
             try
             {
-                if (teamdatagrid.CurrentRow == null || teamdatagrid.CurrentRow.DataBoundItem == null)
-                {
-                    MessageBox.Show("Please select a team to delete.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                Team selected = teamdatagrid.CurrentRow.DataBoundItem as Team;
-
-                DialogResult result = MessageBox.Show($"Are you sure you want to delete {selected.Name}?",
-                    "Confirm Deletion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-
-                if (result == DialogResult.Yes)
-                {
-                    teamManager.Delete(selected.Id);
-                    MessageBox.Show("Footballer deleted successfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LoadTeams();
-                }
+                int id = int.Parse(t1.Text.Trim());
+                teamManager.Delete(id);
+                MessageBox.Show("Team deleted successfully.");
+                LoadTeams();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error deleting team: " + ex.Message);
             }
+            ClearForm();
         }
     }
 }

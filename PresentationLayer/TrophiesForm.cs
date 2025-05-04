@@ -87,23 +87,20 @@ namespace PresentationLayer
         {
             try
             {
-                if (trophydatagrid.CurrentRow == null || trophydatagrid.CurrentRow.DataBoundItem == null)
+
+                Trophy trophy = new Trophy
                 {
-                    MessageBox.Show("Please select a team to update.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
 
-                Trophy selected = trophydatagrid.CurrentRow.DataBoundItem as Trophy;
-
-                selected.Id = Convert.ToInt32(t1.Text);
-                selected.Name = t2.Text;
-                selected.CountryCode = t3.Text;
-                selected.ContinentCode = t4.Text;
-                selected.Footballers = Convert.ToInt32(t5.Text);
+                    Id = int.Parse(t1.Text.Trim()),
+                    Name = t2.Text.Trim(),
+                    CountryCode = t3.Text.Trim(),
+                    ContinentCode = t4.Text.Trim(),
+                    Footballers = int.Parse(t5.Text.Trim())
+                };
 
 
-                trophyManager.Update(selected, true);
-                MessageBox.Show("Trophy updated successfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                trophyManager.Update(trophy);
+                MessageBox.Show("Trophy updated successfully!");
                 LoadTrophies();
             }
             catch (Exception ex)
@@ -116,28 +113,16 @@ namespace PresentationLayer
         {
             try
             {
-                if (trophydatagrid.CurrentRow == null || trophydatagrid.CurrentRow.DataBoundItem == null)
-                {
-                    MessageBox.Show("Please select a footballer to delete.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                Trophy selected = trophydatagrid.CurrentRow.DataBoundItem as Trophy;
-
-                DialogResult result = MessageBox.Show($"Are you sure you want to delete {selected.Name}?",
-                    "Confirm Deletion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-
-                if (result == DialogResult.Yes)
-                {
-                    trophyManager.Delete(selected.Id);
-                    MessageBox.Show("Trophy deleted successfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LoadTrophies();
-                }
+                int id = int.Parse(t1.Text.Trim());
+                trophyManager.Delete(id);
+                MessageBox.Show("Trophy deleted successfully.");
+                LoadTrophies();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error deleting trophy: " + ex.Message);
             }
+            ClearForm();
         }
 
         

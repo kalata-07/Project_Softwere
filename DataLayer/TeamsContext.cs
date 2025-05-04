@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.Marshalling;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -29,7 +30,7 @@ namespace DataLayer
         {
             IQueryable<Team> query = dbContext.Teams;
 
-            if (useNavigationalProperties) query = query.Include(g => g.CountryCode);
+            if (useNavigationalProperties) query = query.Include(g => g.CountryCodeNavigation);
             if (isReadOnly) query = query.AsNoTrackingWithIdentityResolution();
 
             Team team = query.FirstOrDefault(g => g.Id == key);
@@ -43,7 +44,7 @@ namespace DataLayer
         {
             IQueryable<Team> query = dbContext.Teams;
 
-            if (useNavigationalProperties) query = query.Include(g => g.CountryCode);
+            if (useNavigationalProperties) query = query.Include(g => g.CountryCodeNavigation);
             if (isReadOnly) query = query.AsNoTrackingWithIdentityResolution();
 
             return query.ToList();
