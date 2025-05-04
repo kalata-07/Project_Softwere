@@ -34,7 +34,6 @@ namespace PresentationLayer
             stadiumsDataGrid.DataSource = stadiumManager.ReadAll(true, false);
 
         }
-
         private void LoadStadiums()
         {
             try

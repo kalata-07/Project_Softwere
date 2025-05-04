@@ -110,7 +110,6 @@
             create.TabIndex = 21;
             create.Text = "Create";
             create.UseVisualStyleBackColor = true;
-            create.Click += create_Click;
             // 
             // continentsDataGrid
             // 

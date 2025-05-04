@@ -18,7 +18,6 @@ namespace PresentationLayer
         private LibraryManager<Continent, string> continentManager;
         private ContinentContext continentContext;
         private DBLibraryContext context;
-
         public ContinentsForm()
         {
             InitializeComponent();
@@ -118,5 +117,7 @@ namespace PresentationLayer
                 MessageBox.Show("Error deleting continent: " + ex.Message);
             }
         }
+
+      
     }
 }
