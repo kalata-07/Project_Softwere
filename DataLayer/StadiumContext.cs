@@ -29,7 +29,7 @@ namespace DataLayer
         {
             IQueryable<Stadium> query = dbContext.Stadiums;
 
-            if (useNavigationalProperties) query = query.Include(g => g.CountryCode);
+            if (useNavigationalProperties) query = query.Include(g => g.CountryCodeNavigation);
             if (isReadOnly) query = query.AsNoTrackingWithIdentityResolution();
 
             Stadium stadium = query.FirstOrDefault(g => g.Id == key);
@@ -43,7 +43,7 @@ namespace DataLayer
         {
             IQueryable<Stadium> query = dbContext.Stadiums;
 
-            if (useNavigationalProperties) query = query.Include(g => g.CountryCode);
+            if (useNavigationalProperties) query = query.Include(g => g.CountryCodeNavigation);
             if (isReadOnly) query = query.AsNoTrackingWithIdentityResolution();
 
             return query.ToList();

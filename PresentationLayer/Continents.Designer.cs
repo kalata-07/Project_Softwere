@@ -1,6 +1,6 @@
 ﻿namespace PresentationLayer
 {
-    partial class Continents
+    partial class ContinentsForm
     {
         /// <summary>
         /// Required designer variable.
@@ -30,14 +30,14 @@
         {
             continentCode = new Label();
             continentName = new Label();
-            t1 = new TextBox();
-            t2 = new TextBox();
+            continentCodetb = new TextBox();
+            continentNametb = new TextBox();
             delete = new Button();
             update = new Button();
             readAll = new Button();
             create = new Button();
-            dataGridView1 = new DataGridView();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            continentsDataGrid = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)continentsDataGrid).BeginInit();
             SuspendLayout();
             // 
             // continentCode
@@ -48,7 +48,6 @@
             continentCode.Size = new Size(110, 20);
             continentCode.TabIndex = 0;
             continentCode.Text = "Continent code";
-            continentCode.Click += label1_Click;
             // 
             // continentName
             // 
@@ -59,19 +58,19 @@
             continentName.TabIndex = 1;
             continentName.Text = "Continent name";
             // 
-            // t1
+            // continentCodetb
             // 
-            t1.Location = new Point(145, 68);
-            t1.Name = "t1";
-            t1.Size = new Size(125, 27);
-            t1.TabIndex = 10;
+            continentCodetb.Location = new Point(145, 68);
+            continentCodetb.Name = "continentCodetb";
+            continentCodetb.Size = new Size(125, 27);
+            continentCodetb.TabIndex = 10;
             // 
-            // t2
+            // continentNametb
             // 
-            t2.Location = new Point(145, 129);
-            t2.Name = "t2";
-            t2.Size = new Size(125, 27);
-            t2.TabIndex = 11;
+            continentNametb.Location = new Point(145, 129);
+            continentNametb.Name = "continentNametb";
+            continentNametb.Size = new Size(125, 27);
+            continentNametb.TabIndex = 11;
             // 
             // delete
             // 
@@ -81,6 +80,7 @@
             delete.TabIndex = 18;
             delete.Text = "Delete";
             delete.UseVisualStyleBackColor = true;
+            delete.Click += delete_Click;
             // 
             // update
             // 
@@ -90,6 +90,7 @@
             update.TabIndex = 19;
             update.Text = "Update";
             update.UseVisualStyleBackColor = true;
+            update.Click += update_Click;
             // 
             // readAll
             // 
@@ -99,6 +100,7 @@
             readAll.TabIndex = 20;
             readAll.Text = "Read All";
             readAll.UseVisualStyleBackColor = true;
+            readAll.Click += readAll_Click;
             // 
             // create
             // 
@@ -108,34 +110,35 @@
             create.TabIndex = 21;
             create.Text = "Create";
             create.UseVisualStyleBackColor = true;
+            create.Click += create_Click;
             // 
-            // dataGridView1
+            // continentsDataGrid
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(428, 97);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(300, 188);
-            dataGridView1.TabIndex = 22;
+            continentsDataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            continentsDataGrid.Location = new Point(428, 97);
+            continentsDataGrid.Name = "continentsDataGrid";
+            continentsDataGrid.RowHeadersWidth = 51;
+            continentsDataGrid.Size = new Size(300, 188);
+            continentsDataGrid.TabIndex = 22;
             // 
-            // Continents
+            // ContinentsForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(dataGridView1);
+            Controls.Add(continentsDataGrid);
             Controls.Add(create);
             Controls.Add(readAll);
             Controls.Add(update);
             Controls.Add(delete);
-            Controls.Add(t2);
-            Controls.Add(t1);
+            Controls.Add(continentNametb);
+            Controls.Add(continentCodetb);
             Controls.Add(continentName);
             Controls.Add(continentCode);
-            Name = "Continents";
+            Name = "ContinentsForm";
             Text = "Continents";
-            Load += Continents_Load;
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            Load += ContinentForm_Load;
+            ((System.ComponentModel.ISupportInitialize)continentsDataGrid).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -144,12 +147,12 @@
 
         private Label continentCode;
         private Label continentName;
-        private TextBox t1;
-        private TextBox t2;
+        private TextBox continentCodetb;
+        private TextBox continentNametb;
         private Button delete;
         private Button update;
         private Button readAll;
         private Button create;
-        private DataGridView dataGridView1;
+        private DataGridView continentsDataGrid;
     }
 }

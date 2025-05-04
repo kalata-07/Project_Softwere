@@ -44,6 +44,7 @@
             continentsbtn.TabIndex = 0;
             continentsbtn.Text = "Continents";
             continentsbtn.UseVisualStyleBackColor = true;
+            continentsbtn.Click += continentsbtn_Click;
             // 
             // countriesbtn
             // 
@@ -73,6 +74,7 @@
             stadiumsbtn.TabIndex = 3;
             stadiumsbtn.Text = "Stadiums";
             stadiumsbtn.UseVisualStyleBackColor = true;
+            stadiumsbtn.Click += stadiumssbtn_Click;
             // 
             // teamsbtn
             // 

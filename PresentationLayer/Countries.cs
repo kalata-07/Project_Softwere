@@ -120,6 +120,5 @@ namespace PresentationLayer
                 continentcodetb.Text = selected.ContinentCode;
             }
         }
-        
     }
 }

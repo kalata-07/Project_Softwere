@@ -32,7 +32,7 @@ namespace DataLayer
 
             if (useNavigationalProperties)
             {
-                query = query.Include(c => c.ContinentCode);
+                query = query.Include(c => c.Countries);
             }
 
             if (isReadOnly)
@@ -55,7 +55,7 @@ namespace DataLayer
 
             if (useNavigationalProperties)
             {
-                query = query.Include(c => c.ContinentCode);
+                query = query.Include(c => c.Countries);
             }
 
             if (isReadOnly)
