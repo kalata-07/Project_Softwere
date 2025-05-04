@@ -9,8 +9,9 @@ namespace ServiceLayer
 {
     public class LibraryManager<T, K>
     {
-        private readonly IDb<T, K> context;
-        
+
+        private readonly IDb<T, K> context;     
+
 
         public LibraryManager(IDb<T, K> context)
         {
@@ -43,6 +44,6 @@ namespace ServiceLayer
             context.Delete(key);
         }
 
-       
-    }
+
+   }
 }
