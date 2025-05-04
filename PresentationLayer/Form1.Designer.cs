@@ -44,7 +44,6 @@
             continentsbtn.TabIndex = 0;
             continentsbtn.Text = "Continents";
             continentsbtn.UseVisualStyleBackColor = true;
-            continentsbtn.Click += continentsbtn_Click;
             // 
             // countriesbtn
             // 
@@ -94,6 +93,7 @@
             trophiesbtn.TabIndex = 5;
             trophiesbtn.Text = "Trophies";
             trophiesbtn.UseVisualStyleBackColor = true;
+            trophiesbtn.Click += trophiesbtn_Click;
             // 
             // Form1
             // 

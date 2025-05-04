@@ -34,8 +34,6 @@ namespace PresentationLayer
             stadiumsDataGrid.DataSource = stadiumManager.ReadAll(true, false);
 
         }
-
-<<<<<<< HEAD
         private void LoadStadiums()
         {
             try
@@ -125,11 +123,6 @@ namespace PresentationLayer
                 MessageBox.Show("Error deleting stadium: " + ex.Message);
             }
             ClearForm();
-=======
-        private void create_Click(object sender, EventArgs e)
-        {
-
->>>>>>> b29be4d (Added TeamsForm and TrophiesForm)
         }
     }
 }

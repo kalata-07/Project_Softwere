@@ -20,23 +20,22 @@ namespace PresentationLayer
             footballersForm.ShowDialog();
         }
 
-<<<<<<< HEAD
         private void countriesbtn_Click(object sender, EventArgs e)
         {
             CountriesForm countriesForm = new CountriesForm();
             countriesForm.ShowDialog();
-=======
-        private void continentsbtn_Click(object sender, EventArgs e)
-        {
-            ContinentsForm cf = new ContinentsForm();
-            cf.ShowDialog();
         }
 
         private void teamsbtn_Click(object sender, EventArgs e)
         {
-            TeamsForm tf = new TeamsForm();
-            tf.ShowDialog();
->>>>>>> f5413b8 (Added TeamsForm and TrophiesForm)
+            TeamsForm teamsForm = new TeamsForm();
+            teamsForm.ShowDialog();
+        }
+
+        private void trophiesbtn_Click(object sender, EventArgs e)
+        {
+            TrophiesForm trophiesForm = new TrophiesForm();
+            trophiesForm.ShowDialog();
         }
 
         private void stadiumssbtn_Click(object sender, EventArgs e)

@@ -28,33 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            footballersGridView = new DataGridView();
+            trophydatagrid = new DataGridView();
             deletebtn = new Button();
             updatebtn = new Button();
             readallbtn = new Button();
             createbtn = new Button();
+            t5 = new TextBox();
             t4 = new TextBox();
             t3 = new TextBox();
             t2 = new TextBox();
-            t1 = new TextBox();
             label7 = new Label();
             countrycode = new Label();
             label5 = new Label();
             continentcode = new Label();
             name = new Label();
             label1 = new Label();
-            textBox1 = new TextBox();
-            ((System.ComponentModel.ISupportInitialize)footballersGridView).BeginInit();
+            t1 = new TextBox();
+            ((System.ComponentModel.ISupportInitialize)trophydatagrid).BeginInit();
             SuspendLayout();
             // 
-            // footballersGridView
+            // trophydatagrid
             // 
-            footballersGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            footballersGridView.Location = new Point(327, 36);
-            footballersGridView.Name = "footballersGridView";
-            footballersGridView.RowHeadersWidth = 51;
-            footballersGridView.Size = new Size(449, 279);
-            footballersGridView.TabIndex = 43;
+            trophydatagrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            trophydatagrid.Location = new Point(327, 36);
+            trophydatagrid.Name = "trophydatagrid";
+            trophydatagrid.RowHeadersWidth = 51;
+            trophydatagrid.Size = new Size(449, 279);
+            trophydatagrid.TabIndex = 43;
             // 
             // deletebtn
             // 
@@ -64,6 +64,7 @@
             deletebtn.TabIndex = 42;
             deletebtn.Text = "Delete";
             deletebtn.UseVisualStyleBackColor = true;
+            deletebtn.Click += deletebtn_Click;
             // 
             // updatebtn
             // 
@@ -73,6 +74,7 @@
             updatebtn.TabIndex = 41;
             updatebtn.Text = "Update";
             updatebtn.UseVisualStyleBackColor = true;
+            updatebtn.Click += updatebtn_Click;
             // 
             // readallbtn
             // 
@@ -82,6 +84,7 @@
             readallbtn.TabIndex = 40;
             readallbtn.Text = "Read All";
             readallbtn.UseVisualStyleBackColor = true;
+            readallbtn.Click += readallbtn_Click;
             // 
             // createbtn
             // 
@@ -91,34 +94,35 @@
             createbtn.TabIndex = 39;
             createbtn.Text = "Create";
             createbtn.UseVisualStyleBackColor = true;
+            createbtn.Click += createbtn_Click;
+            // 
+            // t5
+            // 
+            t5.Location = new Point(131, 221);
+            t5.Name = "t5";
+            t5.Size = new Size(125, 27);
+            t5.TabIndex = 34;
             // 
             // t4
             // 
-            t4.Location = new Point(131, 221);
+            t4.Location = new Point(131, 170);
             t4.Name = "t4";
             t4.Size = new Size(125, 27);
-            t4.TabIndex = 34;
+            t4.TabIndex = 33;
             // 
             // t3
             // 
-            t3.Location = new Point(131, 170);
+            t3.Location = new Point(132, 119);
             t3.Name = "t3";
             t3.Size = new Size(125, 27);
-            t3.TabIndex = 33;
+            t3.TabIndex = 32;
             // 
             // t2
             // 
-            t2.Location = new Point(132, 119);
+            t2.Location = new Point(131, 69);
             t2.Name = "t2";
             t2.Size = new Size(125, 27);
-            t2.TabIndex = 32;
-            // 
-            // t1
-            // 
-            t1.Location = new Point(131, 69);
-            t1.Name = "t1";
-            t1.Size = new Size(125, 27);
-            t1.TabIndex = 31;
+            t2.TabIndex = 31;
             // 
             // label7
             // 
@@ -169,33 +173,33 @@
             label1.AutoSize = true;
             label1.Location = new Point(76, 32);
             label1.Name = "label1";
-            label1.Size = new Size(49, 20);
+            label1.Size = new Size(22, 20);
             label1.TabIndex = 44;
-            label1.Text = "Name";
+            label1.Text = "Id";
             // 
-            // textBox1
+            // t1
             // 
-            textBox1.Location = new Point(132, 29);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(125, 27);
-            textBox1.TabIndex = 45;
+            t1.Location = new Point(132, 29);
+            t1.Name = "t1";
+            t1.Size = new Size(125, 27);
+            t1.TabIndex = 45;
             // 
             // TrophiesForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(textBox1);
+            Controls.Add(t1);
             Controls.Add(label1);
-            Controls.Add(footballersGridView);
+            Controls.Add(trophydatagrid);
             Controls.Add(deletebtn);
             Controls.Add(updatebtn);
             Controls.Add(readallbtn);
             Controls.Add(createbtn);
+            Controls.Add(t5);
             Controls.Add(t4);
             Controls.Add(t3);
             Controls.Add(t2);
-            Controls.Add(t1);
             Controls.Add(label7);
             Controls.Add(countrycode);
             Controls.Add(label5);
@@ -203,14 +207,15 @@
             Controls.Add(name);
             Name = "TrophiesForm";
             Text = "TrophiesForm";
-            ((System.ComponentModel.ISupportInitialize)footballersGridView).EndInit();
+            Load += TrophiesForm_Load;
+            ((System.ComponentModel.ISupportInitialize)trophydatagrid).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private DataGridView footballersGridView;
+        private DataGridView trophydatagrid;
         private Button deletebtn;
         private Button updatebtn;
         private Button readallbtn;
@@ -219,10 +224,10 @@
         private TextBox pricetb;
         private TextBox countrycodetb;
         private TextBox teampositiontb;
+        private TextBox t5;
         private TextBox t4;
         private TextBox t3;
         private TextBox t2;
-        private TextBox t1;
         private Label label9;
         private Label label8;
         private Label label7;
@@ -233,6 +238,6 @@
         private Label label2;
         private Label name;
         private Label label1;
-        private TextBox textBox1;
+        private TextBox t1;
     }
 }

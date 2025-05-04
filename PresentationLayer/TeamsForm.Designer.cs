@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            teamGridView = new DataGridView();
+            teamdatagrid = new DataGridView();
             create = new Button();
             readAll = new Button();
             update = new Button();
@@ -46,18 +46,19 @@
             t7 = new TextBox();
             teamstadium = new Label();
             label1 = new Label();
-            textBox1 = new TextBox();
-            ((System.ComponentModel.ISupportInitialize)teamGridView).BeginInit();
+            t1 = new TextBox();
+            ((System.ComponentModel.ISupportInitialize)teamdatagrid).BeginInit();
             SuspendLayout();
             // 
-            // teamGridView
+            // teamdatagrid
             // 
-            teamGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            teamGridView.Location = new Point(374, 44);
-            teamGridView.Name = "teamGridView";
-            teamGridView.RowHeadersWidth = 51;
-            teamGridView.Size = new Size(395, 256);
-            teamGridView.TabIndex = 38;
+            teamdatagrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            teamdatagrid.Location = new Point(374, 44);
+            teamdatagrid.Name = "teamdatagrid";
+            teamdatagrid.RowHeadersWidth = 51;
+            teamdatagrid.Size = new Size(395, 256);
+            teamdatagrid.TabIndex = 38;
+            teamdatagrid.CellContentClick += teamGridView_CellContentClick;
             // 
             // create
             // 
@@ -77,6 +78,7 @@
             readAll.TabIndex = 36;
             readAll.Text = "Read All";
             readAll.UseVisualStyleBackColor = true;
+            readAll.Click += readAll_Click;
             // 
             // update
             // 
@@ -86,6 +88,7 @@
             update.TabIndex = 35;
             update.Text = "Update";
             update.UseVisualStyleBackColor = true;
+            update.Click += update_Click;
             // 
             // delete
             // 
@@ -95,6 +98,7 @@
             delete.TabIndex = 34;
             delete.Text = "Delete";
             delete.UseVisualStyleBackColor = true;
+            delete.Click += delete_Click;
             // 
             // t3
             // 
@@ -201,24 +205,24 @@
             label1.TabIndex = 43;
             label1.Text = "Id";
             // 
-            // textBox1
+            // t1
             // 
-            textBox1.Location = new Point(165, 20);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(125, 27);
-            textBox1.TabIndex = 44;
+            t1.Location = new Point(165, 20);
+            t1.Name = "t1";
+            t1.Size = new Size(125, 27);
+            t1.TabIndex = 44;
             // 
             // TeamsForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(textBox1);
+            Controls.Add(t1);
             Controls.Add(label1);
             Controls.Add(teamstadium);
             Controls.Add(t7);
             Controls.Add(t6);
-            Controls.Add(teamGridView);
+            Controls.Add(teamdatagrid);
             Controls.Add(create);
             Controls.Add(readAll);
             Controls.Add(update);
@@ -235,14 +239,14 @@
             Name = "TeamsForm";
             Text = "TeamsForm";
             Load += TeamsForm_Load;
-            ((System.ComponentModel.ISupportInitialize)teamGridView).EndInit();
+            ((System.ComponentModel.ISupportInitialize)teamdatagrid).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private DataGridView teamGridView;
+        private DataGridView teamdatagrid;
         private Button create;
         private Button readAll;
         private Button update;
@@ -260,6 +264,6 @@
         private TextBox t7;
         private Label teamstadium;
         private Label label1;
-        private TextBox textBox1;
+        private TextBox t1;
     }
 }

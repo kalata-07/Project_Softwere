@@ -46,7 +46,7 @@ namespace DataLayer
                 optionsBuilder.LogTo(Console.WriteLine);
 
                 
-                //optionsBuilder.UseMySQL("Server=127.0.0.1;Database=footballteams;User Id=root;Password=Maritsa_154;");
+                
             }
         }
 
