@@ -105,8 +105,10 @@ namespace Tests
         }
 
         [Test]
+       
         public void DeleteFootballer()
         {
+            
             Footballer footballer = new Footballer
             {
                 FirstName = "Luka",
@@ -118,9 +120,14 @@ namespace Tests
             };
 
             footballerContext.Create(footballer);
-            footballerContext.Delete(footballer.Id);
+            Footballer createdFootballer = footballerContext.ReadAll().Last();
+            int footballerId = createdFootballer.Id;
 
-            Assert.Throws<ArgumentException>(() => footballerContext.Read(footballer.Id), "Footballer with id does not exist!");
+            footballerContext.Delete(footballerId);
+
+            KeyNotFoundException ex = Assert.Throws<KeyNotFoundException>(() => footballerContext.Read(footballerId));
+            Assert.That(ex.Message, Is.EqualTo("Footballer not found"));
         }
+
     }
 }
