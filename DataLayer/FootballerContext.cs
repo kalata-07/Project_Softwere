@@ -17,9 +17,6 @@ namespace DataLayer
 
         public void Create(Footballer item)
         {
-            if (item == null)
-                throw new ArgumentNullException(nameof(item));
-
             dbContext.Footballers.Add(item);
             dbContext.SaveChanges();
         }
@@ -41,6 +38,11 @@ namespace DataLayer
             if (isReadOnly)
                 query = query.AsNoTracking();
 
+            Footballer footballer = query.FirstOrDefault(f => f.Id == key);
+            if (footballer == null)
+                throw new KeyNotFoundException("Footballer not found");
+
+
             return query.FirstOrDefault(f => f.Id == key);
         }
 
@@ -58,7 +60,7 @@ namespace DataLayer
             }
 
             if (isReadOnly)
-                query = query.AsNoTracking();
+                if (isReadOnly) query = query.AsNoTrackingWithIdentityResolution();
 
             return query.ToList();
         }
@@ -89,15 +91,8 @@ namespace DataLayer
 
         public void Delete(int key)
         {
-            Footballer footballerFromDb = Read(key, useNavigationalProperties: true);
-
-            if (footballerFromDb == null)
-                throw new KeyNotFoundException("Footballer not found");
-
-            if (footballerFromDb.Footballerstrophies.Any())
-                dbContext.Footballerstrophies.RemoveRange(footballerFromDb.Footballerstrophies);
-
-            dbContext.Footballers.Remove(footballerFromDb);
+            Footballer footballersFromDb = Read(key);
+            dbContext.Footballers.Remove(footballersFromDb);
             dbContext.SaveChanges();
         }
     }
