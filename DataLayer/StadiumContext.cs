@@ -18,14 +18,14 @@ namespace DataLayer
             this.dbContext = dbContext;
         }
 
-        public void Create(Stadium item)
+        public async Task CreateAsync(Stadium item)
         {
             dbContext.Stadiums.Add(item);
-            dbContext.SaveChanges();
+            await dbContext.SaveChangesAsync();
         }
 
 
-        public Stadium Read(int key, bool useNavigationalProperties = false, bool isReadOnly = false)
+        public async Task<Stadium> ReadAsync(int key, bool useNavigationalProperties = false, bool isReadOnly = false)
         {
             IQueryable<Stadium> query = dbContext.Stadiums;
 
@@ -39,7 +39,7 @@ namespace DataLayer
             return stadium;
         }
 
-        public List<Stadium> ReadAll(bool useNavigationalProperties = false, bool isReadOnly = false)
+        public async Task <IEnumerable<Stadium>> ReadAllAsync(bool useNavigationalProperties = false, bool isReadOnly = false)
         {
             IQueryable<Stadium> query = dbContext.Stadiums;
 
@@ -49,21 +49,21 @@ namespace DataLayer
             return query.ToList();
         }
 
-        public void Update(Stadium item, bool useNavigationalProperties = false)
+        public async Task UpdateAsync(Stadium item, bool useNavigationalProperties = false)
         {
-            Stadium stadium = Read(item.Id, useNavigationalProperties);
+            Stadium stadium = await ReadAsync(item.Id, useNavigationalProperties);
             if (stadium == null)
             {
                 throw new ArgumentException("Stadium not found!");
             }
 
             dbContext.Entry(stadium).CurrentValues.SetValues(item);
-            dbContext.SaveChanges();
+            await dbContext.SaveChangesAsync();
         }
 
-        public void Delete(int key)
+        public async Task DeleteAsync(int key)
         {
-            Stadium stadiumFromDb = Read(key);
+            Stadium stadiumFromDb = await ReadAsync(key);
             dbContext.Stadiums.Remove(stadiumFromDb);
             dbContext.SaveChanges();
         }

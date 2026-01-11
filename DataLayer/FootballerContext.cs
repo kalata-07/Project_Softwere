@@ -15,14 +15,14 @@ namespace DataLayer
             this.dbContext = dbContext;
         }
 
-        public void Create(Footballer item)
+        public async Task CreateAsync(Footballer item)
         {
             dbContext.Footballers.Add(item);
-            dbContext.SaveChanges();
+           await dbContext.SaveChangesAsync();
         }
         
 
-        public Footballer Read(int key, bool useNavigationalProperties = false, bool isReadOnly = false)
+        public async Task< Footballer> ReadAsync(int key, bool useNavigationalProperties = false, bool isReadOnly = false)
         {
             IQueryable<Footballer> query = dbContext.Footballers;
 
@@ -46,7 +46,7 @@ namespace DataLayer
             return query.FirstOrDefault(f => f.Id == key);
         }
 
-        public List<Footballer> ReadAll(bool useNavigationalProperties = false, bool isReadOnly = false)
+        public async Task <IEnumerable<Footballer> >ReadAllAsync(bool useNavigationalProperties = false, bool isReadOnly = false)
         {
             IQueryable<Footballer> query = dbContext.Footballers;
 
@@ -66,7 +66,7 @@ namespace DataLayer
         }
 
        
-        public void Update(Footballer item, bool useNavigationalProperties = false)
+        public async Task UpdateAsync(Footballer item, bool useNavigationalProperties = false)
         {
             if (item == null)
                 throw new ArgumentNullException(nameof(item));
@@ -86,14 +86,14 @@ namespace DataLayer
                 existing.Footballerstrophies = item.Footballerstrophies;
             }
 
-            dbContext.SaveChanges();
+           await dbContext.SaveChangesAsync();
         }
 
-        public void Delete(int key)
+        public async Task DeleteAsync(int key)
         {
-            Footballer footballersFromDb = Read(key);
+            Footballer footballersFromDb = await ReadAsync(key);
             dbContext.Footballers.Remove(footballersFromDb);
-            dbContext.SaveChanges();
+            await dbContext.SaveChangesAsync();
         }
     }
 }

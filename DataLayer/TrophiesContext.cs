@@ -18,13 +18,13 @@ namespace DataLayer
             this.dbContext = dbContext;
         }
 
-        public void Create(Trophy item)
+        public async Task CreateAsync(Trophy item)
         {
             dbContext.Trophies.Add(item);
-            dbContext.SaveChanges();
+            await dbContext.SaveChangesAsync();
         }
 
-        public Trophy Read(int key, bool useNavigationalProperties = false, bool isReadOnly = false)
+        public async Task <Trophy> ReadAsync(int key, bool useNavigationalProperties = false, bool isReadOnly = false)
         {
             IQueryable<Trophy> query = dbContext.Trophies;
 
@@ -39,7 +39,7 @@ namespace DataLayer
             return trophy;
         }
 
-        public List<Trophy> ReadAll(bool useNavigationalProperties = false, bool isReadOnly = false)
+        public async Task <IEnumerable<Trophy>> ReadAllAsync(bool useNavigationalProperties = false, bool isReadOnly = false)
         {
             IQueryable<Trophy> query = dbContext.Trophies;
 
@@ -49,23 +49,23 @@ namespace DataLayer
             return query.ToList();
         }
 
-        public void Update(Trophy item, bool useNavigationalProperties = false)
+        public async Task UpdateAsync(Trophy item, bool useNavigationalProperties = false)
         {
-            Trophy trophy = Read(item.Id, useNavigationalProperties);
+            Trophy trophy = await ReadAsync(item.Id, useNavigationalProperties);
             if (trophy == null)
             {
                 throw new ArgumentException("Trophy not found!");
             }
 
             dbContext.Entry(trophy).CurrentValues.SetValues(item);
-            dbContext.SaveChanges();
+            await dbContext.SaveChangesAsync();
         }
 
-        public void Delete(int key)
+        public async Task DeleteAsync(int key)
         {
-            Trophy trophyFromDb = Read(key);
+            Trophy trophyFromDb =await ReadAsync(key);
             dbContext.Trophies.Remove(trophyFromDb);
-            dbContext.SaveChanges();
+           await  dbContext.SaveChangesAsync();
         }
     }
 }

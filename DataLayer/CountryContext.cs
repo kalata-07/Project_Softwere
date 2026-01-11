@@ -15,7 +15,7 @@ namespace DataLayer
             this.dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
         }
 
-        public void Create(Country item)
+        public async Task CreateAsync(Country item)
         {
             var existingCountry = dbContext.Countries.FirstOrDefault(c => c.CountryCode == item.CountryCode);
 
@@ -25,10 +25,10 @@ namespace DataLayer
             }
 
             dbContext.Countries.Add(item);
-            dbContext.SaveChanges();
+            await dbContext.SaveChangesAsync();
         }
 
-        public Country Read(string key, bool useNavigationalProperties = false, bool isReadOnly = true)
+        public async Task<Country> ReadAsync(string key, bool useNavigationalProperties = false, bool isReadOnly = true)
         {
             IQueryable<Country> query = dbContext.Countries;
 
@@ -56,7 +56,7 @@ namespace DataLayer
             return country;
         }
 
-        public List<Country> ReadAll(bool useNavigationalProperties = false, bool isReadOnly = false)
+        public async Task<IEnumerable<Country>> ReadAllAsync(bool useNavigationalProperties = false, bool isReadOnly = false)
         {
             IQueryable<Country> query = dbContext.Countries;
 
@@ -77,7 +77,7 @@ namespace DataLayer
             return query.ToList();
         }
 
-        public void Update(Country item, bool useNavigationalProperties = false)
+        public async Task UpdateAsync(Country item, bool useNavigationalProperties = false)
         {
             if (string.IsNullOrEmpty(item.CountryCode))
             {
@@ -91,12 +91,12 @@ namespace DataLayer
             }
 
             dbContext.Entry(existing).State = EntityState.Detached;  
-            dbContext.Entry(item).State = EntityState.Modified;      
+            dbContext.Entry(item).State = EntityState.Modified;
 
-            dbContext.SaveChanges();
+            await dbContext.SaveChangesAsync();
         }
 
-        public void Delete(string key)
+        public async Task DeleteAsync(string key)
         {
             Country existing = dbContext.Countries.Find(key);
             if (existing == null)
@@ -105,7 +105,7 @@ namespace DataLayer
             }
 
             dbContext.Countries.Remove(existing);
-            dbContext.SaveChanges();
+            await dbContext.SaveChangesAsync();
         }
     }
 }

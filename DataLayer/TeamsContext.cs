@@ -19,14 +19,14 @@ namespace DataLayer
             this.dbContext = dbContext;
         }
 
-        public void Create(Team item)
+        public async Task CreateAsync(Team item)
         {
             dbContext.Teams.Add(item);
-            dbContext.SaveChanges();
+            await dbContext.SaveChangesAsync();
         }
 
 
-        public Team Read(int key, bool useNavigationalProperties = false, bool isReadOnly = false)
+        public async Task <Team> ReadAsync(int key, bool useNavigationalProperties = false, bool isReadOnly = false)
         {
             IQueryable<Team> query = dbContext.Teams;
 
@@ -40,7 +40,7 @@ namespace DataLayer
             return team;
         }
 
-        public List<Team> ReadAll(bool useNavigationalProperties = false, bool isReadOnly = false)
+        public async Task <IEnumerable<Team>> ReadAllAsync(bool useNavigationalProperties = false, bool isReadOnly = false)
         {
             IQueryable<Team> query = dbContext.Teams;
 
@@ -50,23 +50,23 @@ namespace DataLayer
             return query.ToList();
         }
 
-        public void Update(Team item, bool useNavigationalProperties = false)
+        public async Task UpdateAsync(Team item, bool useNavigationalProperties = false)
         {
-            Team team = Read(item.Id, useNavigationalProperties);
+            Team team = await ReadAsync(item.Id, useNavigationalProperties);
             if (team == null)
             {
                 throw new ArgumentException("Team not found!");
             }
 
             dbContext.Entry(team).CurrentValues.SetValues(item);
-            dbContext.SaveChanges();
+           await dbContext.SaveChangesAsync();
         }
 
-        public void Delete(int key)
+        public async Task DeleteAsync(int key)
         {
-            Team teamFromDb = Read(key);
+            Team teamFromDb =await ReadAsync(key);
             dbContext.Teams.Remove(teamFromDb);
-            dbContext.SaveChanges();
+            await dbContext.SaveChangesAsync();
         }
     }
 }
