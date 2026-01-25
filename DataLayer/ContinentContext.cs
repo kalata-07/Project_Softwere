@@ -21,12 +21,12 @@ namespace DataLayer
             this.dbContext = dbContext;
         }
 
-        public void Create(Continent item)
+        public async Task CreateAsync(Continent item)
         {
             dbContext.Continents.Add(item);
-            dbContext.SaveChanges();
+            await dbContext.SaveChangesAsync();
         }
-        public Continent Read(string key, bool useNavigationalProperties = false, bool isReadOnly = false)
+        public async Task<Continent> ReadAsync(string key, bool useNavigationalProperties = false, bool isReadOnly = false)
         {
             IQueryable<Continent> query = dbContext.Continents;
 
@@ -49,7 +49,7 @@ namespace DataLayer
 
             return continent;
         }
-        public List<Continent> ReadAll(bool useNavigationalProperties = false, bool isReadOnly = false)
+        public async Task<IEnumerable<Continent>> ReadAllAsync(bool useNavigationalProperties = false, bool isReadOnly = false)
         {
             IQueryable<Continent> query = dbContext.Continents;
 
@@ -65,21 +65,21 @@ namespace DataLayer
 
             return query.ToList();
         }
-        public void Update(Continent item, bool useNavigationalProperties = false)
+        public async Task UpdateAsync(Continent item, bool useNavigationalProperties = false)
         {
-            Continent existing = Read(item.ContinentCode, useNavigationalProperties);
+            Continent existing = await ReadAsync(item.ContinentCode, useNavigationalProperties);
             if (existing == null)
             {
                 throw new ArgumentException("Continent not found!");
             }
 
             dbContext.Entry(existing).CurrentValues.SetValues(item);
-            dbContext.SaveChanges();
+            await dbContext.SaveChangesAsync();
         }
 
-        public void Delete(string key)
+        public async Task DeleteAsync(string key)
         {
-            Continent existing = Read(key);
+            Continent existing = await ReadAsync(key);
             if (existing == null)
             {
                 throw new ArgumentException("Continent not found!");

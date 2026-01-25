@@ -19,29 +19,29 @@ namespace ServiceLayer
         }
 
        
-        public void Create(T item)
+        public async Task CreateAsync(T item)
         {
-            context.Create(item);
+            await context.CreateAsync(item);
         }
 
-        public T Read(K key, bool useNavigationalProperties = false, bool isReadOnly = false)
+        public async Task<T> ReadAsync(K key, bool useNavigationalProperties = false, bool isReadOnly = false)
         {
-            return context.Read(key, useNavigationalProperties, isReadOnly);
+            return await context.ReadAsync(key, useNavigationalProperties, isReadOnly);
         }
 
-        public List<T> ReadAll(bool useNavigationalProperties = false, bool isReadOnly = false)
+        public async Task<IEnumerable<T>> ReadAllAsync(bool useNavigationalProperties = false, bool isReadOnly = false)
         {
-            return context.ReadAll(useNavigationalProperties, isReadOnly);
+            return await context.ReadAllAsync(useNavigationalProperties, isReadOnly);
         }
 
-        public void Update(T item, bool useNavigationalProperties = false)
+        public async Task UpdateAsync(T item, bool useNavigationalProperties = false)
         {
-            context.Update(item, useNavigationalProperties);
+           await context.UpdateAsync(item, useNavigationalProperties);
         }
 
-        public void Delete(K key)
+        public async Task DeleteAsync(K key)
         {
-            context.Delete(key);
+            await context.DeleteAsync(key);
         }
 
 
