@@ -35,7 +35,7 @@ namespace PresentationLayer
         {
             try
             {
-                List<Team> teams = teamManager.ReadAll(true, false);
+                IEnumerable<Team> teams = (IEnumerable<Team>)teamManager.ReadAllAsync(true, false);
                 teamdatagrid.DataSource = teams;
                 teamdatagrid.AutoResizeColumns();
             }
@@ -75,7 +75,7 @@ namespace PresentationLayer
                     TeamStadium = t7.Text
                 };
 
-                teamContext.Create(t);
+                teamContext.CreateAsync(t);
                 MessageBox.Show("Team added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ClearForm();
 
@@ -114,7 +114,7 @@ namespace PresentationLayer
                     TeamStadium = t7.Text.Trim()
                 };
 
-                teamManager.Update(team);
+                teamManager.UpdateAsync(team);
                 MessageBox.Show("Team updated successfully!");
                 LoadTeams();
             }
@@ -129,7 +129,7 @@ namespace PresentationLayer
             try
             {
                 int id = int.Parse(t1.Text.Trim());
-                teamManager.Delete(id);
+                teamManager.DeleteAsync(id);
                 MessageBox.Show("Team deleted successfully.");
                 LoadTeams();
             }

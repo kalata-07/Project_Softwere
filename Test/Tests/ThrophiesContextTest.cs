@@ -25,7 +25,7 @@ namespace Tests
         }
 
         [Test]
-        public void CreateTrophy()
+        public async Task CreateTrophy()
         {
             Trophy newTrophy = new Trophy
             {
@@ -36,15 +36,15 @@ namespace Tests
                 Footballers = 4
             };
 
-            trophiesContext.Create(newTrophy);
+            trophiesContext.CreateAsync(newTrophy);
 
-            Trophy trophy = trophiesContext.Read(11);
+            Trophy trophy = await trophiesContext.ReadAsync(11);
             Assert.That(trophy, Is.Not.Null);
             Assert.That(trophy.Name, Is.EqualTo("FA Cup"));
         }
 
         [Test]
-        public void ReadTrophy()
+        public async Task ReadTrophy()
         {
             Trophy newTrophy = new Trophy
             {
@@ -54,15 +54,15 @@ namespace Tests
                 ContinentCode = "EU",
                 Footballers = 4
             };
-            trophiesContext.Create(newTrophy);
+            trophiesContext.CreateAsync(newTrophy);
 
-            Trophy trophy = trophiesContext.Read(11);
+            Trophy trophy = await trophiesContext.ReadAsync(11);
 
             Assert.That(trophy.Name == "FA Cup", "Read() does not get Trophy by Id!");
         }
 
         [Test]
-        public void UpdateTrophy()
+        public async Task UpdateTrophy()
         {
             Trophy newTrophy = new Trophy
             {
@@ -72,17 +72,17 @@ namespace Tests
                 ContinentCode = "EU",
                 Footballers = 4
             };
-            trophiesContext.Create(newTrophy);
+            trophiesContext.CreateAsync(newTrophy);
 
             newTrophy.Name = "FA World Cup";
-            trophiesContext.Update(newTrophy);
+            trophiesContext.UpdateAsync(newTrophy);
 
-            Trophy updatedTrophy = trophiesContext.Read(11);
+            Trophy updatedTrophy = await trophiesContext.ReadAsync(11);
             Assert.That(updatedTrophy.Name, Is.EqualTo("FA World Cup"));
         }
 
         [Test]
-        public void DeleteTrophy()
+        public async Task DeleteTrophy()
         {
             Trophy newTrophy = new Trophy
             {
@@ -92,11 +92,11 @@ namespace Tests
                 ContinentCode = "EU",
                 Footballers = 4
             };
-            trophiesContext.Create(newTrophy);
+            trophiesContext.CreateAsync(newTrophy);
 
-            trophiesContext.Delete(11);
+            trophiesContext.DeleteAsync(11);
 
-            ArgumentException ex = Assert.Throws<ArgumentException>(() => trophiesContext.Read(11));
+            ArgumentException ex = Assert.Throws<ArgumentException>(() => trophiesContext.ReadAsync(11));
             Assert.That(ex.Message, Is.EqualTo($"Trophy with id {newTrophy.Id} does not exist!"));
         }
 

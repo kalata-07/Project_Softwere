@@ -1,32 +1,61 @@
+using BusinessLayer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using MVC.Models;
-using System.Diagnostics;
 
 namespace MVC.Controllers
 {
-    public class HomeController : Controller
+    public static class HelperController
     {
-        private readonly ILogger<HomeController> _logger;
+        public const string Error = "Error";
 
-        public HomeController(ILogger<HomeController> logger)
+        public static List<ErrorViewModel> Errors;
+
+        static HelperController()
         {
-            _logger = logger;
+            Errors = new List<ErrorViewModel>();
         }
 
-        public IActionResult Index()
+        public static void ClearErrors()
         {
-            return View();
+            Errors.Clear();
         }
 
-        public IActionResult Privacy()
+        public static void AddError(string code, string description, string requiestId = null)
         {
-            return View();
+            Errors.Add(new ErrorViewModel(code, description, requiestId));
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        public static void AddErrors(IdentityResult result)
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            foreach (IdentityError error in result.Errors)
+            {
+                AddError(error.Code, error.Description);
+            }
+        }
+
+        public static async Task<User> GetLoggedUser(this UserManager<User> userManager, Controller controller)
+        {
+            //string username = User.Claims.First(c => c.Type == ClaimTypes.Name).Value;
+            if (string.IsNullOrEmpty(controller.User.Identity.Name))
+            {
+                AddError("Authentication", "The user is not logged yet!");
+                throw new ArgumentNullException("User is not logged!");
+            }
+
+            string username = controller.User.Identity.Name;
+            User user = await userManager.FindByNameAsync(username);
+
+            if (user == null)
+            {
+                string message = "There is no user with that name!";
+                userManager.Logger.Log(LogLevel.Error, message);
+                AddError("Argument", message);
+                throw new ArgumentException(message);
+            }
+
+            return user;
         }
     }
 }
+

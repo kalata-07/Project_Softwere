@@ -35,7 +35,7 @@ namespace PresentationLayer
         {
             try
             {
-                List<Trophy> teams = trophyManager.ReadAll(true, false);
+                IEnumerable<Trophy> teams = (IEnumerable<Trophy>)trophyManager.ReadAllAsync(true, false);
                 trophydatagrid.DataSource = teams;
                 trophydatagrid.AutoResizeColumns();
             }
@@ -67,7 +67,7 @@ namespace PresentationLayer
                     Footballers = Convert.ToInt32(t5.Text)
                 };
 
-                trophyContext.Create(t);
+                trophyContext.CreateAsync(t);
                 MessageBox.Show("Trophy added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ClearForm();
 
@@ -99,7 +99,7 @@ namespace PresentationLayer
                 };
 
 
-                trophyManager.Update(trophy);
+                trophyManager.UpdateAsync(trophy);
                 MessageBox.Show("Trophy updated successfully!");
                 LoadTrophies();
             }
@@ -114,7 +114,7 @@ namespace PresentationLayer
             try
             {
                 int id = int.Parse(t1.Text.Trim());
-                trophyManager.Delete(id);
+                trophyManager.DeleteAsync(id);
                 MessageBox.Show("Trophy deleted successfully.");
                 LoadTrophies();
             }

@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using BusinessLayer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.Extensions.Identity.Core;
 
 namespace DataLayer
 {
-    public partial class DBLibraryContext : DbContext
+    public partial class DBLibraryContext : IdentityDbContext<User>
     {
         public DBLibraryContext()
         {
@@ -46,7 +48,8 @@ namespace DataLayer
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-          
+            base.OnModelCreating(modelBuilder);
+
             modelBuilder.Entity<Continent>(entity =>
             {
                 entity.HasKey(e => e.ContinentCode).HasName("PRIMARY");
