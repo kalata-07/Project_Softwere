@@ -30,16 +30,16 @@ namespace PresentationLayer
 
         private void CountryForm_Load(object sender, EventArgs e)
         {
-            LoadCountries();
-            countriesDataGrid.DataSource = countryManager.ReadAll(true, false);
+            LoadCountriesAsync();
+            countriesDataGrid.DataSource = countryManager.ReadAllAsync(true, false);
 
         }
 
-        private void LoadCountries()
+        private async Task LoadCountriesAsync()
         {
             try
             {
-                List<Country> countries = countryManager.ReadAll(true, false);
+                IEnumerable<Country> countries = await countryManager.ReadAllAsync(true, false);
                 countriesDataGrid.DataSource = countries;
                 countriesDataGrid.AutoResizeColumns();
             }
@@ -60,9 +60,9 @@ namespace PresentationLayer
                     CountryName = countrynametb.Text,
                     ContinentCode = continentcodetb.Text
                 };
-                countryManager.Create(country);
+                countryManager.CreateAsync(country);
                 MessageBox.Show("Country created successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                LoadCountries();
+                LoadCountriesAsync();
             }
             catch (Exception ex)
             {
@@ -72,7 +72,7 @@ namespace PresentationLayer
 
         private void readallbtn_Click(object sender, EventArgs e)
         {
-            LoadCountries();
+            LoadCountriesAsync();
         }
 
         private void updatebtn_Click(object sender, EventArgs e)
@@ -86,9 +86,9 @@ namespace PresentationLayer
                     ContinentCode = continentcodetb.Text
                 };
 
-                countryManager.Update(country);
+                countryManager.UpdateAsync(country);
                 MessageBox.Show("Country updated successfully.");
-                LoadCountries();
+                LoadCountriesAsync();
             }
             catch (Exception ex)
             {
@@ -101,9 +101,9 @@ namespace PresentationLayer
             try
             {
                 string code = countrycodetb.Text.Trim();
-                countryManager.Delete(code);
+                countryManager.DeleteAsync(code);
                 MessageBox.Show("Country deleted successfully.");
-                LoadCountries();
+                LoadCountriesAsync();
             }
             catch (Exception ex)
             {

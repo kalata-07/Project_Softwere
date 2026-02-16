@@ -31,14 +31,14 @@ namespace PresentationLayer
         private void StadiumForm_Load(object sender, EventArgs e)
         {
             LoadStadiums();
-            stadiumsDataGrid.DataSource = stadiumManager.ReadAll(true, false);
+            stadiumsDataGrid.DataSource = stadiumManager.ReadAllAsync(true, false);
 
         }
         private void LoadStadiums()
         {
             try
             {
-                List<Stadium> stadiums = stadiumManager.ReadAll(true, false);
+                IEnumerable<Stadium> stadiums = (IEnumerable<Stadium>)stadiumManager.ReadAllAsync(true, false);
                 stadiumsDataGrid.DataSource = stadiums;
                 stadiumsDataGrid.AutoResizeColumns();
             }
@@ -69,7 +69,7 @@ namespace PresentationLayer
                     CountryCode = countryCodetb.Text,
                     TownName = townNametb.Text
                 };
-                stadiumManager.Create(stadium);
+                stadiumManager.CreateAsync(stadium);
                 MessageBox.Show("Stadium created successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LoadStadiums();
             }
@@ -97,7 +97,7 @@ namespace PresentationLayer
                     TownName = townNametb.Text.Trim()
                 };
 
-                stadiumManager.Update(stadium);
+                stadiumManager.UpdateAsync(stadium);
                 MessageBox.Show("Stadium updated successfully.");
                 LoadStadiums();
                 ClearForm();
@@ -114,7 +114,7 @@ namespace PresentationLayer
             try
             {
                 int id = int.Parse(idtb.Text.Trim());
-                stadiumManager.Delete(id);
+                stadiumManager.DeleteAsync(id);
                 MessageBox.Show("Stadium deleted successfully.");
                 LoadStadiums();
             }

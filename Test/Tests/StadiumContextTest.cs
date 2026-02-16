@@ -25,7 +25,7 @@ namespace Tests
         }
 
         [Test]
-        public void CreateStadium()
+        public async Task CreateStadium()
         {
             Stadium stadium = new Stadium
             {
@@ -36,16 +36,16 @@ namespace Tests
                 Id = 34
             };
 
-            stadiumContext.Create(stadium);
+            stadiumContext.CreateAsync(stadium);
 
-            Stadium secondStadium = stadiumContext.Read(stadium.Id);
+            Stadium secondStadium = await stadiumContext.ReadAsync(stadium.Id);
             Assert.That(secondStadium.Name, Is.EqualTo(stadium.Name), "Names are not equal!");
             Assert.That(secondStadium.TownName, Is.EqualTo(stadium.TownName), "Town names are not equal!");
             Assert.That(secondStadium.Capacity, Is.EqualTo(stadium.Capacity), "Capacities are not equal!");
         }
 
         [Test]
-        public void ReadStadium()
+        public async Task ReadStadium()
         {
             Stadium stadium = new Stadium
             {
@@ -56,14 +56,14 @@ namespace Tests
                 Id = 5
             };
 
-            stadiumContext.Create(stadium);
+            stadiumContext.CreateAsync(stadium);
 
-            Stadium readStadium = stadiumContext.Read(stadium.Id);
+            Stadium readStadium = await stadiumContext.ReadAsync(stadium.Id);
             Assert.That(readStadium.Name, Is.EqualTo(stadium.Name), "Names are not equal!");
         }
 
         [Test]
-        public void ReadAllStadiums()
+        public async Task ReadAllStadiums()
         {
             Stadium stadium1 = new Stadium
             {
@@ -74,14 +74,14 @@ namespace Tests
                 Id = 1
             };
             
-            stadiumContext.Create(stadium1);
+            stadiumContext.CreateAsync(stadium1);
 
-            List<Stadium> stadiums = stadiumContext.ReadAll();
+            IEnumerable<Stadium> stadiums = await stadiumContext.ReadAllAsync();
             Assert.That(stadiums.Count, Is.EqualTo(2), "Stadiums count is not equal to 2!");
         }
 
         [Test]
-        public void UpdateStadium()
+        public async Task UpdateStadium()
         {
             Stadium stadium = new Stadium
             {
@@ -92,17 +92,17 @@ namespace Tests
                 Id = 35
             };
             
-            stadiumContext.Create(stadium);
+            stadiumContext.CreateAsync(stadium);
 
             stadium.Name = "New Stadium";
-            stadiumContext.Update(stadium);
+            stadiumContext.UpdateAsync(stadium);
 
-            Stadium updatedStadium = stadiumContext.Read(stadium.Id);
+            Stadium updatedStadium = await stadiumContext.ReadAsync(stadium.Id);
             Assert.That(updatedStadium.Name, Is.EqualTo(stadium.Name), "Names are not equal!");
         }
 
         [Test]
-        public void DeleteStadium()
+        public async Task DeleteStadium()
         {
             Stadium stadium = new Stadium
             {
@@ -113,10 +113,10 @@ namespace Tests
                 Id = 1
             };
 
-            stadiumContext.Create(stadium);
-            stadiumContext.Delete(stadium.Id);
+            stadiumContext.CreateAsync(stadium);
+            stadiumContext.DeleteAsync(stadium.Id);
 
-            Assert.Throws<ArgumentException>(() => stadiumContext.Read(stadium.Id), "Stadium with id does not exist!");
+            Assert.Throws<ArgumentException>(() => stadiumContext.ReadAsync(stadium.Id), "Stadium with id does not exist!");
         }
     }
 }

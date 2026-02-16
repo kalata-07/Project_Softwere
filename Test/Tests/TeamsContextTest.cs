@@ -25,7 +25,7 @@ namespace Tests
         }
 
         [Test]
-        public void CreateTeam()
+        public async Task CreateTeam()
         {
             Team newTeam = new Team
             {
@@ -38,15 +38,15 @@ namespace Tests
                 TeamStadium = "Santiago Bernabéu"
             };
 
-            teamsContext.Create(newTeam);
+            teamsContext.CreateAsync(newTeam);
 
-            Team team = teamsContext.Read(7);
+            Team team = await teamsContext.ReadAsync(7);
             Assert.That(team, Is.Not.Null);
             Assert.That(team.Name, Is.EqualTo("Real Madrid"));
         }
 
         [Test]
-        public void ReadTeam()
+        public async Task ReadTeam()
         {
             Team newTeam = new Team
             {
@@ -58,15 +58,15 @@ namespace Tests
                 Founded = 1902,
                 TeamStadium = "Santiago Bernabéu"
             };
-            teamsContext.Create(newTeam);
+            teamsContext.CreateAsync(newTeam);
 
-            Team team = teamsContext.Read(7);
+            Team team = await teamsContext.ReadAsync(7);
 
             Assert.That(team.Name == "Real Madrid", "Read() does not get Team by Id!");
         }
 
         [Test]
-        public void UpdateTeam()
+        public async Task UpdateTeam()
         {
             Team newTeam = new Team
             {
@@ -78,17 +78,17 @@ namespace Tests
                 Founded = 1902,
                 TeamStadium = "Santiago Bernabéu"
             };
-            teamsContext.Create(newTeam);
+            teamsContext.CreateAsync(newTeam);
 
             newTeam.Name = "Real Madrid CF";
-            teamsContext.Update(newTeam);
+            teamsContext.UpdateAsync(newTeam);
 
-            Team updatedTeam = teamsContext.Read(7);
+            Team updatedTeam = await teamsContext.ReadAsync(7);
             Assert.That(updatedTeam.Name, Is.EqualTo("Real Madrid CF"));
         }
 
         [Test]
-        public void DeleteTeam()
+        public async Task DeleteTeam()
         {
             Team newTeam = new Team
             {
@@ -100,11 +100,11 @@ namespace Tests
                 Founded = 1902,
                 TeamStadium = "Santiago Bernabéu"
             };
-            teamsContext.Create(newTeam);
+            teamsContext.CreateAsync(newTeam);
 
-            teamsContext.Delete(7);
+            teamsContext.DeleteAsync(7);
 
-            ArgumentException ex = Assert.Throws<ArgumentException>(() => teamsContext.Read(7));
+            ArgumentException ex = Assert.Throws<ArgumentException>(() => teamsContext.ReadAsync(7));
             Assert.That(ex.Message, Is.EqualTo($"Team with id {newTeam.Id} does not exist!"));
         }
 

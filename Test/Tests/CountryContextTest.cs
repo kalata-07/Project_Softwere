@@ -23,7 +23,7 @@ namespace Tests
         }
 
         [Test]
-        public void CreateCountry()
+        public async Task CreateCountry()
         {
             Country newCountry = new Country
             {
@@ -32,15 +32,15 @@ namespace Tests
                 ContinentCode = "EU"
             };
 
-            countriesContext.Create(newCountry);
+            countriesContext.CreateAsync(newCountry);
 
-            Country country = countriesContext.Read("DE");
+            Country country = await countriesContext.ReadAsync("DE");
             Assert.That(country, Is.Not.Null);
             Assert.That(country.CountryName, Is.EqualTo("Germany"));
         }
 
         [Test]
-        public void ReadCountry()
+        public async Task ReadCountry()
         {
             Country newCountry = new Country
             {
@@ -48,15 +48,15 @@ namespace Tests
                 CountryCode = "DE",
                 ContinentCode = "EU"
             };
-            countriesContext.Create(newCountry);
+            countriesContext.CreateAsync(newCountry);
 
-            Country country = countriesContext.Read("DE");
+            Country country = await countriesContext.ReadAsync("DE");
 
             Assert.That(country.CountryName == "Germany", "Read() does not get Country by CountryCode!");
         }
 
         [Test]
-        public void UpdateCountry()
+        public async Task UpdateCountry()
         {
             Country newCountry = new Country
             {
@@ -66,14 +66,14 @@ namespace Tests
             };
 
             newCountry.CountryName = "Deutschland";
-            countriesContext.Update(newCountry);
+            countriesContext.UpdateAsync(newCountry);
 
-            Country updatedCountry = countriesContext.Read("DE");
+            Country updatedCountry = await countriesContext.ReadAsync("DE");
             Assert.That(updatedCountry.CountryName, Is.EqualTo("Deutschland"));
         }
 
         [Test]
-        public void DeleteCountry()
+        public async Task DeleteCountry()
         {
             Country newCountry = new Country
             {
@@ -82,9 +82,9 @@ namespace Tests
                 ContinentCode = "EU"
             };
 
-            countriesContext.Delete("DE");
+            countriesContext.DeleteAsync("DE");
 
-            ArgumentException ex = Assert.Throws<ArgumentException>(() => countriesContext.Read("DE"));
+            ArgumentException ex = Assert.Throws<ArgumentException>(async () => await countriesContext.ReadAsync("DE"));
             Assert.That(ex.Message, Is.EqualTo("Country with CountryCode 'DE' not found!"));
         }
     }

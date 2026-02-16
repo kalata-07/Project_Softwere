@@ -24,7 +24,7 @@ namespace Tests
         }
 
         [Test]
-        public void CreateFootballer()
+        public async Task CreateFootballer()
         {
             Footballer footballer = new Footballer
             {
@@ -36,15 +36,15 @@ namespace Tests
                 TeamPosition = "Forward"
             };
 
-            footballerContext.Create(footballer);
+            footballerContext.CreateAsync(footballer);
 
-            Footballer lastFootballer = footballerContext.Read(footballer.Id);
+            Footballer lastFootballer = await footballerContext.ReadAsync(footballer.Id);
             Assert.That(lastFootballer.FirstName, Is.EqualTo(footballer.FirstName), "First names are not equal!");
             Assert.That(lastFootballer.LastName, Is.EqualTo(footballer.LastName), "Last names are not equal!");
         }
 
         [Test]
-        public void ReadFootballer()
+        public async Task ReadFootballer()
         {
             Footballer footballer = new Footballer
             {
@@ -56,15 +56,15 @@ namespace Tests
                 TeamPosition = "Forward"
             };
 
-            footballerContext.Create(footballer);
+            footballerContext.CreateAsync(footballer);
 
-            Footballer readFootballer = footballerContext.Read(footballer.Id);
+            Footballer readFootballer = await footballerContext.ReadAsync(footballer.Id);
             Assert.That(readFootballer.FirstName, Is.EqualTo(footballer.FirstName), "First names are not equal!");
             Assert.That(readFootballer.LastName, Is.EqualTo(footballer.LastName), "Last names are not equal!");
         }
 
         [Test]
-        public void ReadAllFootballers()
+        public async Task ReadAllFootballers()
         {
             Footballer footballer1 = new Footballer
             {
@@ -76,14 +76,14 @@ namespace Tests
                 TeamPosition = "Forward"
             };
 
-            footballerContext.Create(footballer1);
+            footballerContext.CreateAsync(footballer1);
 
-            List<Footballer> footballers = footballerContext.ReadAll();
+            IEnumerable<Footballer> footballers = await footballerContext.ReadAllAsync();
             Assert.That(footballers.Count, Is.EqualTo(2), "Footballers count is not equal to 2!");
         }
 
         [Test]
-        public void UpdateFootballer()
+        public async Task UpdateFootballerAsync()
         {
             Footballer footballer = new Footballer
             {
@@ -95,18 +95,18 @@ namespace Tests
                 TeamPosition = "Defender"
             };
 
-            footballerContext.Create(footballer);
+            footballerContext.CreateAsync(footballer);
 
             footballer.LastName = "Ramos Garcia";
-            footballerContext.Update(footballer);
+            footballerContext.UpdateAsync(footballer);
 
-            Footballer updatedFootballer = footballerContext.Read(footballer.Id);
+            Footballer updatedFootballer = await footballerContext.ReadAsync(footballer.Id);
             Assert.That(updatedFootballer.LastName, Is.EqualTo(footballer.LastName), "Last names are not equal!");
         }
 
         [Test]
        
-        public void DeleteFootballer()
+        public async Task DeleteFootballer()
         {
             
             Footballer footballer = new Footballer
@@ -119,13 +119,14 @@ namespace Tests
                 TeamPosition = "Midfielder"
             };
 
-            footballerContext.Create(footballer);
-            Footballer createdFootballer = footballerContext.ReadAll().Last();
+            footballerContext.CreateAsync(footballer);
+            IEnumerable<Footballer> allFootballers = await footballerContext.ReadAllAsync();
+            Footballer createdFootballer = allFootballers.Last();
             int footballerId = createdFootballer.Id;
 
-            footballerContext.Delete(footballerId);
+            footballerContext.DeleteAsync(footballerId);
 
-            KeyNotFoundException ex = Assert.Throws<KeyNotFoundException>(() => footballerContext.Read(footballerId));
+            KeyNotFoundException ex = Assert.Throws<KeyNotFoundException>(() => footballerContext.ReadAsync(footballerId));
             Assert.That(ex.Message, Is.EqualTo("Footballer not found"));
         }
 

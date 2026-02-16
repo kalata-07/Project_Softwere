@@ -26,7 +26,7 @@ namespace Tests
         }
 
         [Test]
-        public void CreateCotinent()
+        public async Task CreateCotinent()
         {
             Continent newContinent = new Continent
             {
@@ -34,15 +34,15 @@ namespace Tests
                 ContinentCode = "EU"
             };
             
-            continentsContext.Create(newContinent);
+            continentsContext.CreateAsync(newContinent);
 
-            Continent continent = continentsContext.Read("EU");
+            Continent continent = await continentsContext.ReadAsync("EU");
             Assert.That(continent, Is.Not.Null);
             Assert.That(continent.ContinentName, Is.EqualTo("Europe"));
         }
 
         [Test]
-        public void ReadContinent()
+        public async Task ReadContinent()
         {
             Continent newContinent = new Continent
             {
@@ -50,15 +50,15 @@ namespace Tests
                 ContinentCode = "EU"
             };
            
-            continentsContext.Create(newContinent);
+            continentsContext.CreateAsync(newContinent);
 
-            Continent continent = continentsContext.Read("EU");
+            Continent continent = await continentsContext.ReadAsync("EU");
 
             Assert.That(continent.ContinentName == "Europe", "Read() does not get Continent by ContinentCode!");
         }
 
         [Test]
-        public void UpdateContinent()
+        public async Task UpdateContinent()
         {
             Continent newContinent = new Continent
             {
@@ -67,14 +67,14 @@ namespace Tests
             };
 
             newContinent.ContinentName = "Europe";
-            continentsContext.Update(newContinent);
+            continentsContext.UpdateAsync(newContinent);
 
-            Continent updatedContinent = continentsContext.Read("EU");
+            Continent updatedContinent = await continentsContext.ReadAsync("EU");
             Assert.That(updatedContinent.ContinentName, Is.EqualTo("Europe"));
         }
 
         [Test]
-        public void DeleteContinent()
+        public async Task DeleteContinent()
         {
             Continent newContinent = new Continent
             {
@@ -82,9 +82,9 @@ namespace Tests
                 ContinentCode = "EU"
             };
 
-            continentsContext.Delete("EU");
+            continentsContext.DeleteAsync("EU");
 
-            ArgumentException ex = Assert.Throws<ArgumentException>(() => continentsContext.Read("EU"));
+            ArgumentException ex = Assert.Throws<ArgumentException>(async () => await continentsContext.ReadAsync("EU"));
             Assert.That(ex.Message, Is.EqualTo("Continent with ContinentCode 'EU' not found!"));
         }
     }

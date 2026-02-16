@@ -28,16 +28,16 @@ namespace PresentationLayer
 
         private void ContinentForm_Load(object sender, EventArgs e)
         {
-            LoadContinents();
-            continentsDataGrid.DataSource = continentManager.ReadAll(true, false);
+            LoadContinentsAsync();
+            continentsDataGrid.DataSource = continentManager.ReadAllAsync(true, false);
 
         }
 
-        private void LoadContinents()
+        private async Task LoadContinentsAsync()
         {
             try
             {
-                List<Continent> continents = continentManager.ReadAll(true, false);
+                IEnumerable<Continent> continents = await continentManager.ReadAllAsync(true, false);
                 continentsDataGrid.DataSource = continents;
                 continentsDataGrid.AutoResizeColumns();
             }
@@ -68,9 +68,9 @@ namespace PresentationLayer
                     ContinentName = continentNametb.Text
                 };
 
-                continentManager.Create(continent);
+                continentManager.CreateAsync(continent);
                 MessageBox.Show("Continent created successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                LoadContinents();
+                LoadContinentsAsync();
             }
             catch (Exception ex)
             {
@@ -80,7 +80,7 @@ namespace PresentationLayer
 
         private void readAll_Click(object sender, EventArgs e)
         {
-            LoadContinents();
+            LoadContinentsAsync();
         }
 
         private void update_Click(object sender, EventArgs e)
@@ -93,9 +93,9 @@ namespace PresentationLayer
                     ContinentName = continentNametb.Text
                 };
 
-                continentManager.Update(continent);
+                continentManager.UpdateAsync(continent);
                 MessageBox.Show("Continent updated successfully.");
-                LoadContinents();
+                LoadContinentsAsync();
             }
             catch (Exception ex)
             {
@@ -108,9 +108,9 @@ namespace PresentationLayer
             try
             {
                 string code = continentCodetb.Text.Trim();
-                continentManager.Delete(code);
+                continentManager.DeleteAsync(code);
                 MessageBox.Show("Continent deleted successfully.");
-                LoadContinents();
+                LoadContinentsAsync();
             }
             catch (Exception ex)
             {

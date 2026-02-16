@@ -39,7 +39,7 @@ namespace PresentationLayer
         {
             try
             {
-                List<Footballer> footballers = footballerManager.ReadAll(true, false);
+                IEnumerable<Footballer> footballers = (IEnumerable<Footballer>)footballerManager.ReadAllAsync(true, false);
                 footballersdatagrid.DataSource = footballers;
                 footballersdatagrid.AutoResizeColumns();
             }
@@ -81,7 +81,7 @@ namespace PresentationLayer
                     Trophies = int.Parse(trophiestb.Text)
                 };
 
-                footballerContext.Create(f);
+                footballerContext.CreateAsync(f);
 
                 MessageBox.Show("Footballer added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ClearForm(); 
@@ -115,7 +115,7 @@ namespace PresentationLayer
                     TeamId = int.Parse(teamidtb.Text.Trim())
                 };
 
-                footballerManager.Update(footballer);
+                footballerManager.UpdateAsync(footballer);
                 MessageBox.Show("Footballer updated successfully.");
                 LoadFootballers();
             }
@@ -130,7 +130,7 @@ namespace PresentationLayer
             try
             {
                 int id = int.Parse(idtb.Text.Trim());
-                footballerManager.Delete(id);
+                footballerManager.DeleteAsync(id);
                 MessageBox.Show("Footballer deleted successfully.");
                 LoadFootballers();
             }
