@@ -2,7 +2,6 @@
 using DataLayer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -15,13 +14,13 @@ using System.Threading.Tasks;
 
 namespace MVC.Controllers
 {
-    public class FootballerController : Controller
+    public class FootballersController : Controller
     {
         private readonly LibraryManager<Footballer, int> footballerManager;
         private readonly LibraryManager<Team, int> teamManager;
         private readonly LibraryManager<Country, string> countryManager;
 
-        public FootballerController(LibraryManager<Footballer, int> footballerManager,
+        public FootballersController(LibraryManager<Footballer, int> footballerManager,
                                     LibraryManager<Team, int> teamManager,
                                     LibraryManager<Country, string> countryManager)
         {

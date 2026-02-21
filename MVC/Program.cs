@@ -1,5 +1,8 @@
+using BusinessLayer;
 using DataLayer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using ServiceLayer;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,10 +11,34 @@ var builder = WebApplication.CreateBuilder(args);
 //    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // Temporary test line
-var connectionString = "Server=(localdb)\\mssqllocaldb;Database=footballteams;Trusted_Connection=True;TrustServerCertificate=True;";
+//connection string for SQL Server 
+//var connectionString = "Server=(localdb)\\mssqllocaldb;Database=footballteams;Trusted_Connection=True;TrustServerCertificate=True;";
+
+var connectionString = "Server=localhost;Port=3306;Database=footballteams;User=root;Password=root;";
+var serverVersion = new MySqlServerVersion(new Version(8, 0, 0));
 
 builder.Services.AddDbContext<DBLibraryContext>(options =>
-    options.UseSqlServer(connectionString));
+    options.UseMySql(connectionString, serverVersion));
+
+builder.Services.AddIdentity<BusinessLayer.User, Microsoft.AspNetCore.Identity.IdentityRole>()
+    .AddEntityFrameworkStores<DBLibraryContext>()
+    .AddDefaultTokenProviders();
+
+builder.Services.AddScoped<IDb<Footballer, int>, FootballerContext>();
+builder.Services.AddScoped<IDb<Team, int>, TeamsContext>();
+builder.Services.AddScoped<IDb<Country, string>, CountryContext>();
+builder.Services.AddScoped<IDb<Stadium, int>, StadiumContext>();
+builder.Services.AddScoped<IDb<Continent, string>, ContinentContext>();
+builder.Services.AddScoped<IDb<Trophy, int>, TrophiesContext>();
+
+builder.Services.AddScoped<LibraryManager<Footballer, int>>();
+builder.Services.AddScoped<LibraryManager<Team, int>>();
+builder.Services.AddScoped<LibraryManager<Country, string>>();
+builder.Services.AddScoped<LibraryManager<Stadium, int>>();
+builder.Services.AddScoped<LibraryManager<Continent, string>>();
+builder.Services.AddScoped<LibraryManager<Trophy, int>>();
+
+
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -25,12 +52,10 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
-
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
 app.UseRouting();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
