@@ -1,10 +1,13 @@
 using BusinessLayer;
 using DataLayer;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
+using MVC.Models;
 using ServiceLayer;
 
 var builder = WebApplication.CreateBuilder(args);
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DBLibraryContextConnection' not found.");;
 
 //// Connect to database
 //builder.Services.AddDbContext<DBLibraryContext>(options =>
@@ -13,9 +16,11 @@ var builder = WebApplication.CreateBuilder(args);
 // Temporary test line
 //connection string for SQL Server 
 //var connectionString = "Server=(localdb)\\mssqllocaldb;Database=footballteams;Trusted_Connection=True;TrustServerCertificate=True;";
+//var connectionString = "Server=localhost;Port=3306;Database=footballteams;User=root;Password=root;";
 
-var connectionString = "Server=localhost;Port=3306;Database=footballteams;User=root;Password=Maritsa_154;";
-var serverVersion = new MySqlServerVersion(new Version(8, 0, 0));
+//var connectionString = "Server=localhost;Port=3306;Database=footballteams;User=root;Password=Maritsa_154;";
+
+var serverVersion = new MySqlServerVersion(new Version(9, 0, 0));
 
 builder.Services.AddDbContext<DBLibraryContext>(options =>
     options.UseMySql(connectionString, serverVersion));
@@ -38,10 +43,11 @@ builder.Services.AddScoped<LibraryManager<Stadium, int>>();
 builder.Services.AddScoped<LibraryManager<Continent, string>>();
 builder.Services.AddScoped<LibraryManager<Trophy, int>>();
 
-
+builder.Services.AddScoped<IEmailSender, EmailSender>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddRazorPages();
 
 var app = builder.Build();
 
@@ -61,5 +67,7 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+app.MapRazorPages();
 
 app.Run();

@@ -56,7 +56,7 @@ namespace MVC.Controllers
         //Post Footballer/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Administator")]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Create([Bind("FirstName,LastName,Age,TeamId,TeamPosition,CountryCode,Price,Salary,ShirtNumber,Captain")] Footballer footballer)
         {
             try
