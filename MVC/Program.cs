@@ -14,7 +14,7 @@ var builder = WebApplication.CreateBuilder(args);
 //connection string for SQL Server 
 //var connectionString = "Server=(localdb)\\mssqllocaldb;Database=footballteams;Trusted_Connection=True;TrustServerCertificate=True;";
 
-var connectionString = "Server=localhost;Port=3306;Database=footballteams;User=root;Password=root;";
+var connectionString = "Server=localhost;Port=3306;Database=footballteams;User=root;Password=Maritsa_154;";
 var serverVersion = new MySqlServerVersion(new Version(8, 0, 0));
 
 builder.Services.AddDbContext<DBLibraryContext>(options =>

@@ -1,9 +1,13 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - MVC</title>
+    <title>@ViewData["Title"] - FootWorld</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/MVC.styles.css" asp-append-version="true" />
@@ -12,7 +16,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">MVC</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">⚽ FootWorld</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -26,25 +30,23 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Continents" asp-action="Index">ContinentsController</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Continents" asp-action="Index">Continents</a>
                         </li> 
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Countries" asp-action="Index">CountriesController</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Countries" asp-action="Index">Countries</a>
                         </li> 
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Footballers" asp-action="Index">FootballerController</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Footballers" asp-action="Index">Footballer</a>
+                        </li> 
+                        
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Stadiums" asp-action="Index">Stadiums</a>
                         </li> 
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Footballerstrophies" asp-action="Index">FootballertrophiesController</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Teams" asp-action="Index">Teams</a>
                         </li> 
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Stadiums" asp-action="Index">StadiumsController</a>
-                        </li> 
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Teams" asp-action="Index">TeamsController</a>
-                        </li> 
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Trophies" asp-action="Index">TrophiesController</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Trophies" asp-action="Index">Trophies</a>
                         </li> 
                     </ul>
                 </div>
@@ -57,9 +59,10 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2026 - MVC - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <footer class="footer small-footer">
+        <div class="container text-center">
+            © @DateTime.Now.Year FootWorld |
+            @Html.ActionLink("Privacy", "Privacy", "Home")
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

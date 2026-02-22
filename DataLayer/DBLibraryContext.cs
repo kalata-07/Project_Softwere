@@ -41,9 +41,9 @@ namespace DataLayer
         {
             if (!optionsBuilder.IsConfigured)
             {
-                // optionsBuilder.UseMySQL("Server=127.0.0.1;Database=footballteams;User Id=root;Password=Maritsa_154;"); //kaloqn
+                 optionsBuilder.UseMySQL("Server=127.0.0.1;Database=footballteams;User Id=root;Password=Maritsa_154;"); //kaloqn
                 // optionsBuilder.UseMySQL("Server=127.0.0.1;Database=footballteams;Uid=root;Pwd=R00T!R00T!;"); //elena
-                optionsBuilder.UseMySQL("Server=127.0.0.1;Database=footballteams;Uid=root;Pwd=root;"); //teodor
+                //optionsBuilder.UseMySQL("Server=127.0.0.1;Database=footballteams;Uid=root;Pwd=root;"); //teodor
                 optionsBuilder.LogTo(Console.WriteLine);
             }
         }
