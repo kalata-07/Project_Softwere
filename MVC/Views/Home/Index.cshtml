@@ -1,0 +1,67 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="hero-section text-center d-flex align-items-center">
+    <div class="container">
+        <h1 class="display-4 text-warning fw-bold">
+            ⚽ Welcome to FootWorld!
+        </h1>
+
+        <p class="lead mt-3">
+            The ultimate football database experience.
+        </p>
+
+        <div class="mt-4">
+            @Html.ActionLink("Explore Footballers", "Index", "Footballers", null,
+            new { @class = "btn btn-warning btn-lg mr-2" })
+
+            @Html.ActionLink("View Teams", "Index", "Teams", null,
+                        new { @class = "btn btn-outline-light btn-lg" })
+        </div>
+    </div>
+</div>
+
+
+<!-- FEATURES SECTION -->
+<div class="container mt-5">
+    <div class="row text-center">
+
+        <div class="col-md-4 mb-4">
+            <div class="card feature-card p-4">
+                <i class="fa-solid fa-users fa-2x text-warning mb-3"></i>
+                <h4>Legendary Players</h4>
+                <p>Browse footballers from all eras and continents.  </p>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card feature-card p-4">
+                <i class="fa-solid fa-trophy fa-2x text-warning mb-3"></i>
+                <h4>Prestigious Trophies</h4>
+                <p>Discover the most iconic football trophies.  </p>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card feature-card p-4">
+                <i class="fa-solid fa-building fa-2x text-warning mb-3"></i>
+                <h4>Famous Stadiums</h4>
+                <p>Explore legendary stadiums from around the world.</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- CALL TO ACTION -->
+<div class="cta-section text-center mt-5 p-5">
+    <h2 class="text-warning">Start Managing Your Football Data Today</h2>
+    <p class="mt-auto">
+        Add players, manage teams, track trophies and build your football universe.
+       
+    </p>
+
+   
+</div>

@@ -1,0 +1,54 @@
+﻿@model BusinessLayer.Team
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Team</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            <th>Name: </th>
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            <th>Coach: </th>
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CoachName)
+        </dd>
+        <dt class = "col-sm-2">
+            <th>Kits: </th>
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Colours)
+        </dd>
+        <dt class = "col-sm-2">
+            <th>Founded: </th>
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Founded)
+        </dd>
+        <dt class = "col-sm-2">
+            <th>Stadium: </th>
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TeamStadium)
+        </dd>
+        <dt class = "col-sm-2">
+            <th>Country: </th>
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CountryCodeNavigation.CountryCode)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id" , class="btn btn-warning">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

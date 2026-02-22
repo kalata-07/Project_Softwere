@@ -1,0 +1,59 @@
+﻿@model BusinessLayer.Team
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Team</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label">Name</label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CountryCode" class="control-label">Country</label>
+                <select asp-for="CountryCode" class="form-control" asp-items="ViewBag.CountryCode"></select>
+                <span asp-validation-for="CountryCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CoachName" class="control-label">Coach</label>
+                <input asp-for="CoachName" class="form-control" />
+                <span asp-validation-for="CoachName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Colours" class="control-label">Kits</label>
+                <input asp-for="Colours" class="form-control" />
+                <span asp-validation-for="Colours" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Founded" class="control-label">Founded</label>
+                <input asp-for="Founded" class="form-control" />
+                <span asp-validation-for="Founded" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TeamStadium" class="control-label">Stadium</label>
+                <input asp-for="TeamStadium" class="form-control" />
+                <span asp-validation-for="TeamStadium" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

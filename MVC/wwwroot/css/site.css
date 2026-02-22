@@ -1,0 +1,128 @@
+:root {
+    --main-gold: #ffc107; /* Bootstrap warning */
+    --main-gold-dark: #e0a800; /* hover */
+}
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    background-color: #f4f8fb;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #2c3e50;
+}
+
+/* NAVBAR */
+.navbar {
+    background-color: var(--main-gold) !important;
+}
+
+    .navbar .nav-link,
+    .navbar-brand {
+        color: black !important; /* тъмносин текст за контраст */
+        font-weight: 600;
+    }
+
+        .navbar .nav-link:hover {
+            color: black !important;
+        }
+
+/* CARDS */
+.card {
+    border-radius: 15px;
+    border: none;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    transition: 0.3s ease;
+}
+
+    .card:hover {
+        transform: translateY(-5px);
+    }
+
+/* BUTTONS */
+.btn-primary {
+    background-color: #2a5298;
+    border: thick;
+}
+
+    .btn-primary:hover {
+        background-color: #1e3c72;
+        border: thick;
+    }
+
+/* FOOTER */
+.small-footer {
+    background-color: var(--main-gold);
+    color: black;
+    font-size: 16px;
+    padding: 8px 0;
+    height: 100px;
+}
+
+    .small-footer a {
+        color: black;
+        font-weight: 600;
+        text-decoration: none;
+    }
+
+        .small-footer a:hover {
+            color: black;
+            
+        }
+/* HERO SECTION */
+.hero-section {
+    height: 60vh;
+    background-color: #1c1c1c;
+    background-size: cover;
+    background-position: center;
+    color: white;
+}
+
+/* FEATURE CARDS */
+.feature-card {
+    background-color: #1c1c1c;
+    height:170px;
+    color: white;
+    border-radius: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+    .feature-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+    }
+
+/* CTA SECTION */
+.cta-section {
+    background-color: #1c1c1c;
+    color: white;
+    border-radius: 15px;
+}
+
+.cta-section, .container {
+    margin-bottom: 70px; /* допълнително разстояние за секции */
+}
+
+/*Footballers*/
+.btn-xs {
+    padding: 3px 6px;
+    font-size: 12px;
+    border-radius: 6px;
+}
+
+background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1508098682722-e99c43a406b2');

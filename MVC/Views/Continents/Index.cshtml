@@ -1,0 +1,36 @@
+﻿@model IEnumerable<BusinessLayer.Continent>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-dark mb-4">
+    🌍 Continents
+</h1>
+
+<p>
+    <a asp-action="Create" , class="btn btn-warning btn-lg mb-3">
+        <i class="fa fa-plus"></i>Add new Continent
+    </a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContinentName)
+            </td>
+            <td>
+                    <a asp-action="Edit" asp-route-id="@item.ContinentCode", class="btn btn-warning">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.ContinentCode", class="btn btn-info">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ContinentCode", class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
